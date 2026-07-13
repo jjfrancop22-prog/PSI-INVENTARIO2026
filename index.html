@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>KARDEX Lab Ambiental - ERP Inventarios V1.1.15 PRODUCCION ESTABLE</title>
+<title>KARDEX Enterprise V2.0.2 - Shell Limpio Seguro</title>
 <style>
 :root{
   --bg:#0d1820;--surface:#122030;--border:#1e3550;
@@ -146,23 +146,92 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 @media(max-width:760px){.exec-grid{grid-template-columns:1fr 1fr}.exec-table{font-size:11px}.exec-table th,.exec-table td{padding:8px 6px}}
 
 @media(max-width:760px){.backup-btn{padding:7px 8px;font-size:11px}.backup-actions{margin-left:4px}.backup-btn span{display:none}}
+
+/* ENTERPRISE V2.0.2 - Shell limpio y responsive */
+.topbar.enterprise-v2{display:flex;align-items:center;gap:8px;padding:7px 10px;background:#122030;border-bottom:1px solid #1e3550;flex-shrink:0;overflow:visible;min-height:48px;}
+.enterprise-v2 .brand{margin-right:4px;min-width:max-content;}
+.v2-menu-group{display:flex;align-items:center;gap:6px;flex:1;min-width:0;overflow:visible;}
+.erp-menu{position:relative;}
+.erp-menu>summary{list-style:none;cursor:pointer;border:1px solid #1e3550;background:#10253a;color:#e8edf2;border-radius:10px;padding:7px 12px;font-size:12px;font-weight:850;white-space:nowrap;user-select:none;}
+.erp-menu>summary::-webkit-details-marker{display:none;}
+.erp-menu[open]>summary,.erp-menu>summary:hover{border-color:#00c2a0;color:#00c2a0;}
+.erp-menu-content{position:absolute;top:calc(100% + 6px);left:0;z-index:5000;min-width:210px;background:#122030;border:1px solid #1e3550;border-radius:12px;box-shadow:0 16px 45px rgba(0,0,0,.45);padding:6px;}
+.erp-menu-content button{display:flex;align-items:center;gap:8px;width:100%;border:0;background:transparent;color:#e8edf2;text-align:left;border-radius:9px;padding:9px 10px;font-size:12px;font-weight:750;cursor:pointer;}
+.erp-menu-content button:hover{background:#172840;color:#00c2a0;}
+.enterprise-v2 .seltabs{margin-left:0;display:flex;gap:5px;flex-shrink:0;}
+.enterprise-v2 .seltab{padding:8px 14px;}
+.enterprise-v2 .backup-status{flex-shrink:0;}
+.frames.erp-switching::after{content:'Cambiando módulo…';position:absolute;right:14px;bottom:14px;background:rgba(18,32,48,.92);border:1px solid var(--border);color:var(--muted);font-size:11px;font-weight:700;padding:7px 11px;border-radius:10px;z-index:5;animation:v2fade .25s ease;}
+@keyframes v2fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:980px){.topbar.enterprise-v2{flex-wrap:wrap;height:auto}.v2-menu-group{order:3;flex-basis:100%;overflow-x:auto;padding-top:4px}.enterprise-v2 .seltabs{margin-left:auto}.erp-menu-content{position:fixed;left:10px;right:10px;top:94px;min-width:auto}.erp-menu-content button{padding:10px 12px}.enterprise-v2 .brand small{display:none}}
+@media(max-width:560px){.enterprise-v2 .seltab{padding:7px 9px;font-size:11px}.erp-menu>summary{padding:7px 9px;font-size:11px}.enterprise-v2 .backup-status{display:none}}
+
 @media(max-width:560px){
   .brand small{display:none;}
   .seltab{padding:8px 10px;font-size:12px;}
 }
+
+.compras-inbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.76);z-index:10050;display:none;align-items:flex-start;justify-content:center;padding:70px 12px 20px;overflow:auto}
+.compras-inbox-overlay.open{display:flex}
+.compras-inbox-modal{width:min(1050px,96vw);background:#122030;border:1px solid #1e3550;border-radius:16px;overflow:hidden;color:#e8edf2;box-shadow:0 20px 70px rgba(0,0,0,.5)}
+.compras-inbox-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#172840;border-bottom:1px solid #1e3550}
+.compras-inbox-head h3{flex:1;color:#00c2a0;font-size:14px}
+.compras-inbox-body{padding:12px;max-height:68vh;overflow:auto}
+.compras-inbox-actions{display:flex;gap:8px;justify-content:flex-end;padding:12px 14px;background:#0f1f30;border-top:1px solid #1e3550}
+.compras-inbox-actions button,.compras-inbox-btn{padding:8px 11px;border-radius:9px;border:1px solid #1e3550;background:#10253a;color:#e8edf2;font-weight:800;cursor:pointer}
+.compras-inbox-btn.primary{background:#00c2a0;color:#05251e;border-color:#00c2a0}
+.compras-inbox-card{background:#0f1f30;border:1px solid #1e3550;border-radius:12px;padding:11px;margin-bottom:9px}
+.compras-inbox-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:8px}
+.compras-inbox-cell{background:#172840;border-radius:8px;padding:7px}
+.compras-inbox-cell small{display:block;color:#6b8fa8;font-size:9px;text-transform:uppercase}
+.compras-inbox-cell b{font-size:11px}
+.compras-code-row{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:8px;align-items:end;margin-top:10px;padding:9px;background:#172840;border:1px solid #1e3550;border-radius:10px}
+.compras-code-row label{display:block;color:#8fb3cc;font-size:9px;text-transform:uppercase;font-weight:900;margin-bottom:5px}
+.compras-code-row input{width:100%;background:#0f1f30;border:1px solid #1e3550;color:#e8edf2;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:800;text-transform:uppercase}
+.compras-code-row input:focus{outline:none;border-color:#00c2a0}
+.compras-code-help{font-size:9px;color:#6b8fa8;margin-top:4px;line-height:1.35}
+@media(max-width:560px){.compras-code-row{grid-template-columns:1fr}}
+
+@media(max-width:760px){.compras-inbox-grid{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="brand">🔬 KARDEX <small>Lab Ambiental - tiempo real</small></div><div class="version-badge">V1.1.15</div><div class="stable-badge">✅ PRODUCCIÓN ESTABLE</div><div class="backup-actions"><button class="backup-btn" onclick="backupActiveApp()">💾 <span>Backup</span></button><button class="backup-btn restore" onclick="restoreActiveApp()">📂 <span>Restaurar</span></button><button class="backup-btn" onclick="exportActiveCSV()">⬇️ <span>Reporte</span></button><button class="backup-btn" onclick="openActiveMonthExport()">📅 <span>Filtrar mes</span></button><button class="backup-btn audit" onclick="openAuditERP()">🧾 <span>Auditoría</span></button><button class="backup-btn expiry" onclick="openExpiryERP()">⏳ <span>Vencimientos</span></button><button class="backup-btn" onclick="openConsumptionERP_DIRECTO()">📈 <span>Consumo</span></button><button class="backup-btn exec" onclick="openExecutiveDashboardERP()">📊 <span>Gerencial</span></button><button class="backup-btn" onclick="openPurchasesERP()">🛒 <span>Compras</span></button><span class="backup-status" id="backup-status">Últ. backup: —</span></div>
+<div class="topbar enterprise-v2">
+  <div class="brand">🔬 KARDEX <small>Lab Ambiental - Enterprise</small></div>
+  <div class="version-badge">V2.1.6</div>
+  <div class="stable-badge">✅ LOTES + COMPRAS READY</div>
+  <div class="backup-status" id="backup-status">Últ. backup: —</div>
+  <div class="v2-menu-group">
+    <details class="erp-menu"><summary>📁 Archivo</summary><div class="erp-menu-content">
+      <button onclick="closeAllMenusV2(); backupActiveApp()">💾 Backup del módulo activo</button>
+      <button onclick="closeAllMenusV2(); restoreActiveApp()">📂 Restaurar backup</button>
+      <button onclick="closeAllMenusV2(); exportActiveCSV()">⬇️ Reporte general</button>
+    </div></details>
+    <details class="erp-menu"><summary>📊 Reportes</summary><div class="erp-menu-content">
+      <button onclick="closeAllMenusV2(); openActiveMonthExport()">📅 Filtrar mes</button>
+      <button onclick="closeAllMenusV2(); openConsumptionERP_DIRECTO()">📈 Consumo</button>
+      <button onclick="closeAllMenusV2(); openExpiryERP()">⏳ Vencimientos</button>
+      <button onclick="closeAllMenusV2(); openExecutiveDashboardERP()">📊 Dashboard gerencial</button>
+    </div></details>
+    <details class="erp-menu"><summary>🛒 Compras</summary><div class="erp-menu-content">
+      <button onclick="closeAllMenusV2(); openPurchasesERP()">🛒 Compras inteligentes</button>
+      <button onclick="closeAllMenusV2(); exportPurchasesExcel()">📘 Exportar compras Excel</button>
+      <button onclick="closeAllMenusV2(); exportPurchasesBridgeJSON()">🔗 Enlace módulo compras JSON</button>
+      <button onclick="closeAllMenusV2(); openComprasBridgeInbox()">☁️ Bandeja automática desde Compras</button>
+    </div></details>
+    <details class="erp-menu"><summary>⚙ Herramientas</summary><div class="erp-menu-content">
+      <button onclick="closeAllMenusV2(); openAuditERP()">🧾 Auditoría</button>
+      <button onclick="closeAllMenusV2(); updateBackupStatus()">🔄 Actualizar estado</button>
+    </div></details>
+  </div>
   <div class="seltabs">
     <button class="seltab active" data-app="reactivos" onclick="showApp('reactivos')"><span class="i">🧪</span>Reactivos</button>
     <button class="seltab" data-app="liquidos" onclick="showApp('liquidos')"><span class="i">💧</span>Líquidos</button>
     <button class="seltab" data-app="solidos" onclick="showApp('solidos')"><span class="i">⚗️</span>Sólidos</button>
   </div>
 </div>
-
 
 <div class="exec-overlay" id="exec-overlay" onclick="if(event.target===this) closeExecutiveDashboardERP()">
   <div class="exec-modal">
@@ -216,6 +285,26 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         <button onclick="exportConsumptionERP()">⬇️ Exportar Excel</button>
       </div>
       <div id="consumption-content"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="compras-inbox-overlay" id="compras-inbox-overlay" onclick="if(event.target===this) closeComprasBridgeInbox()">
+  <div class="compras-inbox-modal">
+    <div class="compras-inbox-head">
+      <h3>📥 Bandeja Compras → KARDEX</h3>
+      <button class="compras-inbox-btn" onclick="closeComprasBridgeInbox()">×</button>
+    </div>
+    <div class="compras-inbox-body">
+      <div style="font-size:11px;color:#8fb3cc;margin-bottom:10px">
+        La bandeja se actualiza automáticamente desde Firebase. Al pulsar “Ingresar”, el motor busca primero si el producto ya existe: si existe, prepara una nueva entrada y lote; si no existe, abre la ficha normal de producto con los datos precargados.
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="compras-inbox-btn primary" onclick="refreshComprasBridgeInbox()">🔄 Actualizar bandeja</button><select id="compras-inbox-filter" onchange="renderFirebaseInbox()" style="max-width:220px;background:#0f1f30;border:1px solid #1e3550;color:#e8edf2;border-radius:9px;padding:8px 10px"><option value="__PENDIENTES__" selected>Pendientes activos</option><option value="">Todos los estados</option><option>Pendiente</option><option>En revisión</option><option>Cuarentena</option><option>Ingresado</option><option>Rechazado</option><option>Anulado</option></select></div>
+      <div id="compras-inbox-content" style="margin-top:12px"><div style="color:#6b8fa8">Conectando con Firebase...</div></div>
+    </div>
+    <div class="compras-inbox-actions">
+      <button onclick="closeComprasBridgeInbox()">Cerrar</button>
     </div>
   </div>
 </div>
@@ -576,10 +665,13 @@ table.kmov-full td{padding:7px 8px;border-top:1px solid var(--border);}
           <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Responsable</label><input type=&quot;text&quot; id=&quot;m-resp&quot; placeholder=&quot;Ej: Jipson Franco&quot;></div>
         </div>
         <div class=&quot;form-row&quot;>
-          <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Documento</label><input type=&quot;text&quot; id=&quot;m-doc&quot; placeholder=&quot;Ej: OC-166-25&quot;></div>
+          <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Documento / OC</label><input type=&quot;text&quot; id=&quot;m-doc&quot; placeholder=&quot;Ej: OC-166-25&quot;></div>
           <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Área</label><input type=&quot;text&quot; id=&quot;m-area&quot; placeholder=&quot;Ej: Fisicoquímico&quot;></div>
         </div>
-        <div class=&quot;form-row full&quot;><div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Observación</label><input type=&quot;text&quot; id=&quot;m-obs&quot;></div></div>
+        <div class=&quot;form-row full&quot;>
+          <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Fecha de vencimiento / caducidad del lote</label><input type=&quot;date&quot; id=&quot;m-caducidad-lote&quot;></div>
+        </div>
+        <div class=&quot;form-row full&quot;><div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Observación</label><input type=&quot;text&quot; id=&quot;m-obs&quot; placeholder=&quot;Trazabilidad del lote, recepción, proveedor o condición del envase&quot;></div></div>
         <div class=&quot;stock-preview&quot; id=&quot;stock-preview&quot;>
           <div class=&quot;sp-label&quot;>👁 Vista previa</div>
           <div class=&quot;sp-row&quot;><span style=&quot;font-size:11px;color:var(--muted)&quot;>Stock lote:</span><span class=&quot;sp-val&quot; id=&quot;sp-lote&quot;>—</span></div>
@@ -892,7 +984,7 @@ function recalcFromMovs() {
     if (cs !== null) codigoSaldoMap[cod] = cs;
     if (m.clave) {
       const saldo = getLoteSaldo(m);
-      const entry = { saldo, lote: m.lote, codigo: cod, reactivo: m.reactivo, fecha: m.fecha };
+      const entry = { saldo, lote: m.lote, codigo: cod, reactivo: m.reactivo, fecha: m.fecha, caducidad: m.caducidad||m.fecha_caducidad||'', fecha_caducidad: m.fecha_caducidad||m.caducidad||'' };
       loteSaldoMap[m.clave] = entry;
       const key = cod + '|' + m.lote;
       if (!loteNumMap[key] || fechaOrden(m.fecha) >= fechaOrden(loteNumMap[key].fecha||'')) {
@@ -919,7 +1011,7 @@ function recalcFromMovs() {
         best = byExact || byLoteNum;
       }
       const saldo = best !== undefined ? best.saldo : (sl.saldo ?? 0);
-      return { ...sl, saldo: Math.round(saldo*1000)/1000, fecha_ultimo: best?.fecha||sl.fecha_ultimo||'', agotado: saldo <= 0 };
+      return { ...sl, saldo: Math.round(saldo*1000)/1000, fecha_ultimo: best?.fecha||sl.fecha_ultimo||'', caducidad: best?.caducidad||best?.fecha_caducidad||sl.caducidad||sl.fecha_caducidad||'', fecha_caducidad: best?.fecha_caducidad||best?.caducidad||sl.fecha_caducidad||sl.caducidad||'', agotado: saldo <= 0 };
     });
     LOTES[cod].sort((a,b) => (a.agotado?1:0)-(b.agotado?1:0) || b.saldo-a.saldo);
   });
@@ -938,7 +1030,7 @@ function recalcFromMovs() {
     if (!LOTES[cod]) LOTES[cod] = [];
     const existsByLote = LOTES[cod].find(l => l.lote === data.lote);
     if (!existsByLote && data.saldo > 0) {
-      LOTES[cod].push({ clave: cod+'|'+data.lote, lote: data.lote, saldo: data.saldo, fecha_ultimo: data.fecha, agotado: false });
+      LOTES[cod].push({ clave: cod+'|'+data.lote, lote: data.lote, saldo: data.saldo, fecha_ultimo: data.fecha, caducidad: data.caducidad||data.fecha_caducidad||'', fecha_caducidad: data.fecha_caducidad||data.caducidad||'', agotado: false });
       LOTES[cod].sort((a,b) => (a.agotado?1:0)-(b.agotado?1:0)||b.saldo-a.saldo);
       // Recalc stock after adding new lote
       const myLotes = LOTES[cod];
@@ -1107,7 +1199,7 @@ function renderInv() {
             <div class=&quot;lote-dot ${isAg?'bad':lst}&quot;></div>
             <div class=&quot;lote-info&quot;>
               <div class=&quot;lote-num&quot;>Lote: ${l.lote} ${isAg?'<span style=&quot;font-size:9px;color:var(--muted)&quot;>(agotado)</span>':''}</div>
-              <div class=&quot;lote-sub&quot;>Última mov: ${l.fecha_ultimo||'—'}${l.marca?' · '+l.marca:''}</div>
+              <div class=&quot;lote-sub&quot;>Última mov: ${l.fecha_ultimo||'—'}${l.marca?' · '+l.marca:''}${(l.caducidad||l.fecha_caducidad)?' · Vence: '+(l.caducidad||l.fecha_caducidad):''}</div>
               <div class=&quot;lote-bar-track&quot;><div class=&quot;lote-bar-fill&quot; style=&quot;width:${lpct}%;background:${isAg?'var(--muted)':loteColor(lst)}&quot;></div></div>
             </div>
             <div class=&quot;lote-stock&quot; style=&quot;color:${isAg?'var(--muted)':loteColor(lst)};font-size:${isAg?'12':'14'}px&quot;>${Number(l.saldo)||0} ${item.unidad}</div>
@@ -1281,7 +1373,7 @@ function renderLoteSelector(cod) {
       <div class=&quot;lote-opt-dot&quot; style=&quot;background:${isAgotado?'var(--muted)':loteColor(st)}&quot;></div>
       <div class=&quot;lote-opt-info&quot;>
         <div class=&quot;lote-opt-num&quot;>Lote: <b>${l.lote}</b> ${isAgotado?'<span style=&quot;font-size:9px;color:var(--muted);font-weight:400&quot;>(agotado)</span>':''}</div>
-        <div class=&quot;lote-opt-sub&quot;>Última mov: ${l.fecha_ultimo||'—'}${l.marca?' · '+l.marca:''}</div>
+        <div class=&quot;lote-opt-sub&quot;>Última mov: ${l.fecha_ultimo||'—'}${l.marca?' · '+l.marca:''}${(l.caducidad||l.fecha_caducidad)?' · Vence: '+(l.caducidad||l.fecha_caducidad):''}</div>
         <div class=&quot;lote-opt-bar&quot;><div class=&quot;lote-opt-bar-fill&quot; style=&quot;width:${isAgotado?0:pct}%;background:${loteColor(st)}&quot;></div></div>
       </div>
       <div>
@@ -1293,6 +1385,7 @@ function renderLoteSelector(cod) {
       selectedLote=lotes[idx];
       document.querySelectorAll('.lote-opt').forEach((el,i)=>el.classList.toggle('selected',i===idx));
       document.getElementById('m-lote-manual').value='';
+      const cadEl=document.getElementById('m-caducidad-lote'); if(cadEl) cadEl.value=selectedLote.caducidad||selectedLote.fecha_caducidad||'';
       updatePreview();
     });
     sel.appendChild(div);
@@ -1367,6 +1460,8 @@ async function registrarMovimiento(tipoForzado) {
     responsable:document.getElementById('m-resp').value.trim()||'Sistema',
     doc:document.getElementById('m-doc').value.trim(),
     area:document.getElementById('m-area').value.trim(),
+    caducidad:document.getElementById('m-caducidad-lote')?document.getElementById('m-caducidad-lote').value:'',
+    fecha_caducidad:document.getElementById('m-caducidad-lote')?document.getElementById('m-caducidad-lote').value:'',
     obs:document.getElementById('m-obs').value.trim(),
     delta, saldo_lote:newLote, saldo_codigo:newTotal,
     timestamp:new Date().toISOString()
@@ -1382,6 +1477,7 @@ async function registrarMovimiento(tipoForzado) {
     document.getElementById('m-lote-manual').value='';
     document.getElementById('m-doc').value='';
     document.getElementById('m-area').value='';
+    const cadEl=document.getElementById('m-caducidad-lote'); if(cadEl) cadEl.value='';
     document.getElementById('m-obs').value='';
     document.getElementById('stock-preview').style.display='none';
     selectedLote=null;
@@ -2271,8 +2367,7 @@ window.KARDEX_BACKUP = {
     var html='<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body>'+
       '<table border="1">'+
       '<thead><tr><th>Módulo</th><th>Mes</th><th>Reactivo / Material</th><th>Código</th><th>Entradas</th><th>Salidas</th><th>Neto</th><th>Movimientos</th><th>Último movimiento</th></tr></thead>'+
-      '<tbody>'+rows+'</tbody></table><!-- CHANGELOG V1.1.15: Producción estable. Se actualiza identificación visible de versión estable sin modificar Firebase, datos, iframes ni lógica interna. Base recomendada para producción y futuras mejoras. -->
-</body></html>';
+      '<tbody>'+rows+'</tbody></table></body></html>';
     var blob=new Blob(['\ufeff'+html],{type:'application/vnd.ms-excel;charset=utf-8'});
     var a=document.createElement('a');
     a.href=URL.createObjectURL(blob);
@@ -2286,6 +2381,119 @@ window.KARDEX_BACKUP = {
 </script>
 
 <!-- CHANGELOG V1.1.15: Producción estable. Se actualiza identificación visible de versión estable sin modificar Firebase, datos, iframes ni lógica interna. Base recomendada para producción y futuras mejoras. -->
+
+
+<script>
+/* ENTERPRISE V2.0.4 - Editor de trazabilidad por lote/envase.
+   El botón Editar general se mantiene para la ficha maestra; este parche añade ✏️ Lote en cada lote. */
+(function(){
+  function patchFrame(frame){
+    try{
+      var w=frame.contentWindow, d=frame.contentDocument;
+      if(!w || !d || w.__LOTE_EDITOR_V203__) return;
+      w.__LOTE_EDITOR_V203__=true;
+      var app=frame.getAttribute('data-app')||'reactivos';
+      var movCol= app==='liquidos' ? 'liq_movimientos' : (app==='solidos' ? 'sol_movimientos' : 'movimientos');
+      var style=d.createElement('style');
+      style.textContent='.btn-lote-edit-v203{margin-left:auto;border:1px solid rgba(167,139,250,.35);background:rgba(167,139,250,.12);color:#a78bfa;border-radius:9px;padding:7px 10px;font-size:11px;font-weight:900;cursor:pointer;white-space:nowrap}.btn-lote-edit-v203:hover{border-color:#a78bfa}.lote-editor-note-v203{font-size:11px;color:#6b8fa8;line-height:1.35;margin:0 0 10px}.lote-editor-grid-v203{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lote-editor-grid-v203 .full{grid-column:1/-1}@media(max-width:650px){.lote-editor-grid-v203{grid-template-columns:1fr}.lote-editor-grid-v203 .full{grid-column:auto}}';
+      d.head.appendChild(style);
+      function toast(msg,color){ try{ w.toast ? w.toast(msg,color) : alert(msg); }catch(e){ alert(msg); } }
+      function ensureModal(){
+        var old=d.getElementById('ov-lote-v203'); if(old) return old;
+        var ov=d.createElement('div'); ov.className='overlay'; ov.id='ov-lote-v203';
+        ov.innerHTML='<div class="modal"><div class="mhdr"><button class="btn-close" id="le-close-v203">←</button><h2 id="le-title-v203">Editar lote</h2></div><div class="mbody"><div class="fsep">📦 Trazabilidad específica del lote / envase</div><p class="lote-editor-note-v203">Estos datos pertenecen al lote seleccionado, no a la ficha general del reactivo. Sirve cuando cada frasco tiene presentación, tara o caducidad diferente.</p><input type="hidden" id="le-cod-v203"><input type="hidden" id="le-lote-original-v203"><div class="lote-editor-grid-v203"><div class="fg"><label class="flbl">Lote *</label><input type="text" id="le-lote-v203"></div><div class="fg"><label class="flbl">Caducidad del lote</label><input type="date" id="le-cad-v203"></div><div class="fg"><label class="flbl">Presentación / capacidad</label><input type="number" id="le-pres-v203" step="0.01"></div><div class="fg"><label class="flbl">N° frascos/envases</label><input type="number" id="le-env-v203" min="0" step="1"></div><div class="fg"><label class="flbl">Tara 1 envase (g)</label><input type="number" id="le-tara-v203" min="0" step="0.01"></div><div class="fg"><label class="flbl">Densidad lote (g/mL, líquidos)</label><input type="number" id="le-dens-v203" min="0" step="0.001"></div><div class="fg"><label class="flbl">Marca / proveedor lote</label><input type="text" id="le-marca-v203"></div><div class="fg full"><label class="flbl">Observación del lote</label><textarea id="le-obs-v203" rows="3"></textarea></div></div></div><div class="mfoot"><button class="btn-primary" id="le-save-v203">✅ Guardar lote</button><button class="btn-ghost" id="le-cancel-v203">Cancelar</button></div></div>';
+        d.body.appendChild(ov);
+        d.getElementById('le-close-v203').onclick=d.getElementById('le-cancel-v203').onclick=function(){ ov.classList.remove('open'); };
+        d.getElementById('le-save-v203').onclick=saveLote;
+        return ov;
+      }
+      function getLote(cod,lote){
+        var arr=(w.LOTES&&w.LOTES[cod])||[];
+        return arr.find(function(x){return String(x.lote)===String(lote);})||null;
+      }
+      function openLoteEditor(cod,lote){
+        ensureModal();
+        var item=(w.INV||[]).find(function(x){return String(x.codigo)===String(cod);})||{};
+        var l=getLote(cod,lote)||{};
+        d.getElementById('le-title-v203').textContent='Editar lote: '+(lote||'');
+        d.getElementById('le-cod-v203').value=cod||'';
+        d.getElementById('le-lote-original-v203').value=lote||'';
+        d.getElementById('le-lote-v203').value=l.lote||lote||'';
+        d.getElementById('le-cad-v203').value=l.caducidad||l.fecha_caducidad||item.caducidad||'';
+        d.getElementById('le-pres-v203').value=(l.presentacion!==undefined?l.presentacion:(l.cant_inicial!==undefined?l.cant_inicial:(item.presentacion||'')));
+        d.getElementById('le-env-v203').value=l.envases||l.frascos||l.num_envases||'';
+        d.getElementById('le-tara-v203').value=l.tara_envase_g||l.tara||l.tara_g||'';
+        var densInp=d.getElementById('le-dens-v203'); if(densInp) densInp.value=l.densidad||item.densidad||'';
+        d.getElementById('le-marca-v203').value=l.marca||item.marca||'';
+        d.getElementById('le-obs-v203').value=l.obs_lote||l.obs||'';
+        d.getElementById('ov-lote-v203').classList.add('open');
+      }
+      async function saveLote(){
+        var cod=d.getElementById('le-cod-v203').value.trim();
+        var oldLote=d.getElementById('le-lote-original-v203').value.trim();
+        var newLote=d.getElementById('le-lote-v203').value.trim();
+        if(!cod||!oldLote||!newLote){toast('⛔ Código y lote son obligatorios','var(--danger)');return;}
+        var meta={
+          lote:newLote,
+          caducidad:d.getElementById('le-cad-v203').value||'',
+          fecha_caducidad:d.getElementById('le-cad-v203').value||'',
+          presentacion:Number(d.getElementById('le-pres-v203').value)||0,
+          envases:Number(d.getElementById('le-env-v203').value)||0,
+          frascos:Number(d.getElementById('le-env-v203').value)||0,
+          tara_envase_g:Number(d.getElementById('le-tara-v203').value)||0,
+          tara_g:Number(d.getElementById('le-tara-v203').value)||0,
+          densidad:(d.getElementById('le-dens-v203')&&d.getElementById('le-dens-v203').value)?Number(d.getElementById('le-dens-v203').value):undefined,
+          marca:d.getElementById('le-marca-v203').value.trim(),
+          obs_lote:d.getElementById('le-obs-v203').value.trim(),
+          loteEditadoAt:new Date().toISOString()
+        };
+        var arr=(w.LOTES&&w.LOTES[cod])||[];
+        arr.forEach(function(l){ if(String(l.lote)===String(oldLote)){ Object.assign(l,meta); } });
+        (w.MOVS||[]).forEach(function(m){ if(String(m.codigo)===cod && String(m.lote)===oldLote){ Object.assign(m,meta,{lote:newLote,clave:cod+'|'+newLote}); } });
+        try{
+          if(w.db){
+            var snap=await w.db.collection(movCol).where('codigo','==',cod).where('lote','==',oldLote).get();
+            var batch=w.db.batch(), n=0;
+            snap.forEach(function(doc){ batch.set(doc.ref, Object.assign({},meta,{clave:cod+'|'+newLote}), {merge:true}); n++; });
+            if(n>0) await batch.commit();
+          }
+        }catch(e){ console.warn('No se pudo actualizar Firebase del lote',e); toast('⚠️ Guardado visual/local. Revisa conexión Firebase.','var(--warn)'); }
+        try{ if(typeof w.renderInv==='function') w.renderInv(); if(typeof w.renderLoteSelector==='function'){ var sel=d.getElementById('m-reactivo'); if(sel&&sel.value===cod) w.renderLoteSelector(cod); } }catch(e){}
+        d.getElementById('ov-lote-v203').classList.remove('open');
+        toast('✅ Lote actualizado: '+newLote,'var(--green)');
+      }
+      function addButtons(){
+        try{
+          d.querySelectorAll('.lote-row').forEach(function(row){
+            if(row.querySelector('.btn-lote-edit-v203')) return;
+            var card=row.closest('.card'); if(!card || !card.id || !card.id.startsWith('ic-')) return;
+            var idx=Number(card.id.replace('ic-',''));
+            var item=(w.INV||[])[idx]; if(!item) return;
+            var loteText=(row.querySelector('.lote-num')||{}).textContent||'';
+            var lote=(loteText.replace('Lote:','').replace('(agotado)','').trim().split(/\s+/)[0]||'').trim();
+            if(!lote) return;
+            var btn=d.createElement('button'); btn.type='button'; btn.className='btn-lote-edit-v203'; btn.textContent='✏️ Lote';
+            btn.onclick=function(ev){ ev.stopPropagation(); openLoteEditor(item.codigo,lote); };
+            row.appendChild(btn);
+          });
+        }catch(e){ console.warn(e); }
+      }
+      var old=w.renderInv;
+      if(typeof old==='function'){
+        w.renderInv=function(){ var r=old.apply(this,arguments); setTimeout(addButtons,80); return r; };
+      }
+      setInterval(addButtons,1500);
+      setTimeout(addButtons,1200);
+    }catch(e){ console.warn('Lote editor patch error',e); }
+  }
+  function patchAll(){ document.querySelectorAll('.appframe').forEach(patchFrame); }
+  window.addEventListener('DOMContentLoaded',function(){ setTimeout(patchAll,1000); setTimeout(patchAll,3500); });
+  setInterval(patchAll,4000);
+})();
+</script>
+
+<!-- CHANGELOG ENTERPRISE V2.0.4: Se agrega editor específico por lote/envase para Reactivos, Líquidos y Sólidos. El botón Editar general queda solo para ficha maestra; cada lote ahora permite editar caducidad, presentación, N° envases, tara y observación para trazabilidad. -->
+
 </body>
 </html>"></iframe>
   <iframe class="appframe" id="frame-liquidos" data-app="liquidos" srcdoc="<!DOCTYPE html>
@@ -2674,7 +2882,14 @@ table.kmov-full td{padding:7px 8px;border-top:1px solid var(--border);}
         <div id=&quot;ml-section&quot;>
           <div class=&quot;form-row&quot;>
             <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Stock en mL *</label><input type=&quot;number&quot; id=&quot;m-stock-ml&quot; step=&quot;0.1&quot; min=&quot;0&quot; placeholder=&quot;mL&quot; oninput=&quot;updatePreview()&quot;></div>
-            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>N° Frascos</label><input type=&quot;number&quot; id=&quot;m-nfrascos2&quot; min=&quot;1&quot; value=&quot;1&quot;></div>
+            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>N° Frascos / Envases</label><input type=&quot;number&quot; id=&quot;m-nfrascos2&quot; min=&quot;1&quot; value=&quot;1&quot;></div>
+          </div>
+          <div class=&quot;form-row full&quot;>
+            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Tara 1 envase (g) — se guarda con el lote</label><input type=&quot;number&quot; id=&quot;m-tara-entrada&quot; step=&quot;0.1&quot; min=&quot;0&quot; placeholder=&quot;Ej: 82.3&quot;></div>
+          </div>
+          <div class=&quot;form-row&quot;>
+            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Fecha de vencimiento del lote</label><input type=&quot;date&quot; id=&quot;m-caducidad-lote&quot;></div>
+            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Densidad del lote (g/mL) — solo líquidos</label><input type=&quot;number&quot; id=&quot;m-densidad-lote&quot; step=&quot;0.001&quot; min=&quot;0&quot; placeholder=&quot;Ej: 1.000&quot;></div>
           </div>
         </div>
 
@@ -2986,7 +3201,9 @@ function recalcFromMovs(){
     if(cs!==null)codigoSaldoMap[cod]=cs;
     if(m.clave){
       const saldo=getLoteSaldo(m);
-      const entry={saldo,lote:m.lote,codigo:cod,reactivo:m.reactivo,fecha:m.fecha};
+      const taraG=(m.tara_g!==undefined&&m.tara_g!==null)?Number(m.tara_g):((m.tara_total&&m.n_frascos)?Number(m.tara_total)/Number(m.n_frascos):undefined);
+      const stockInicial=Number(m.entrada_ml||m.entrada_g||m.stock_ml||m.stock_g||m.cantidad||saldo||0);
+      const entry={saldo,lote:m.lote,codigo:cod,reactivo:m.reactivo,fecha:m.fecha,tara_g:taraG,n_frascos:m.n_frascos,stock_inicial:stockInicial,frasco_ml:stockInicial,presentacion:m.presentacion||'',caducidad:m.caducidad||m.fecha_caducidad||'',fecha_caducidad:m.fecha_caducidad||m.caducidad||'',densidad:m.densidad};
       loteSaldoMap[m.clave]=entry;
       const key=cod+'|'+m.lote;
       if(!loteNumMap[key]||fechaOrden(m.fecha)>=fechaOrden(loteNumMap[key].fecha||'')){
@@ -3009,7 +3226,13 @@ function recalcFromMovs(){
         best=byExact||byLoteNum;
       }
       const saldo=best!==undefined?best.saldo:(sl.saldo??0);
-      return{...sl,saldo:Math.round(saldo*1000)/1000,fecha_ultimo:best?.fecha||sl.fecha_ultimo||'',agotado:saldo<=0};
+      return{...sl,
+        tara_g:(best?.tara_g!==undefined&&best?.tara_g!==null)?best.tara_g:sl.tara_g,
+        n_frascos:best?.n_frascos||sl.n_frascos,
+        stock_inicial:best?.stock_inicial||sl.stock_inicial,
+        frasco_ml:best?.frasco_ml||sl.frasco_ml,
+        presentacion:best?.presentacion||sl.presentacion,
+        saldo:Math.round(saldo*1000)/1000,fecha_ultimo:best?.fecha||sl.fecha_ultimo||'',agotado:saldo<=0};
     });
     LOTES[cod].sort((a,b)=>(a.agotado?1:0)-(b.agotado?1:0)||b.saldo-a.saldo);
   });
@@ -3025,7 +3248,7 @@ function recalcFromMovs(){
     const cod=data.codigo;
     if(!LOTES[cod])LOTES[cod]=[];
     if(!LOTES[cod].find(l=>l.lote===data.lote)&&data.saldo>0){
-      LOTES[cod].push({clave:cod+'|'+data.lote,lote:data.lote,saldo:data.saldo,fecha_ultimo:data.fecha,agotado:false});
+      LOTES[cod].push({clave:cod+'|'+data.lote,lote:data.lote,saldo:data.saldo,fecha_ultimo:data.fecha,agotado:false,tara_g:data.tara_g,n_frascos:data.n_frascos,stock_inicial:data.stock_inicial,frasco_ml:data.frasco_ml,presentacion:data.presentacion,caducidad:data.caducidad||data.fecha_caducidad||'',fecha_caducidad:data.fecha_caducidad||data.caducidad||'',densidad:data.densidad});
       LOTES[cod].sort((a,b)=>(a.agotado?1:0)-(b.agotado?1:0)||b.saldo-a.saldo);
       const item=INV.find(i=>i.codigo===cod);
       if(item)item.stock=Math.round(LOTES[cod].filter(l=>!l.agotado).reduce((a,l)=>a+(l.saldo||0),0)*100)/100;
@@ -3171,7 +3394,7 @@ function renderInv(){
             <div class=&quot;lote-dot ${isAg?'bad':lst}&quot;></div>
             <div class=&quot;lote-info&quot;>
               <div class=&quot;lote-num&quot;>Lote: ${l.lote} ${isAg?'<span style=&quot;font-size:9px;color:var(--muted)&quot;>(agotado)</span>':''}</div>
-              <div class=&quot;lote-sub&quot;>Últ. mov: ${l.fecha_ultimo||'—'} ${l.presentacion?'· '+l.presentacion:''}</div>
+              <div class=&quot;lote-sub&quot;>Últ. mov: ${l.fecha_ultimo||'—'} ${l.presentacion?'· '+l.presentacion:''} ${l.caducidad||l.fecha_caducidad?'· Vence: '+(l.caducidad||l.fecha_caducidad):''} ${l.tara_g?'· Tara: '+safeN(l.tara_g).toFixed(1)+' g':''} ${l.n_frascos?'· Envases: '+l.n_frascos:''}</div>
               <div class=&quot;lote-bar-track&quot;><div class=&quot;lote-bar-fill&quot; style=&quot;width:${isAg?0:lpct}%;background:${isAg?'var(--muted)':loteColor(lst)}&quot;></div></div>
             </div>
             <div class=&quot;lote-stock&quot; style=&quot;color:${isAg?'var(--muted)':loteColor(lst)}&quot;>${safeN(l.saldo).toFixed(1)} mL</div>
@@ -3354,7 +3577,7 @@ function renderLoteSelector(cod){
       <div class=&quot;lote-opt-dot&quot; style=&quot;background:${isAg?'var(--muted)':loteColor(st)}&quot;></div>
       <div class=&quot;lote-opt-info&quot;>
         <div class=&quot;lote-opt-num&quot;>Lote: <b>${l.lote}</b> ${isAg?'<span style=&quot;font-size:9px;color:var(--muted)&quot;>(agotado)</span>':''}</div>
-        <div class=&quot;lote-opt-sub&quot;>Últ. mov: ${l.fecha_ultimo||'—'} ${l.presentacion?'· '+l.presentacion:''}</div>
+        <div class=&quot;lote-opt-sub&quot;>Últ. mov: ${l.fecha_ultimo||'—'} ${l.presentacion?'· '+l.presentacion:''} ${l.caducidad||l.fecha_caducidad?'· Vence: '+(l.caducidad||l.fecha_caducidad):''} ${l.tara_g?'· Tara: '+safeN(l.tara_g).toFixed(1)+' g':''} ${l.n_frascos?'· Envases: '+l.n_frascos:''}</div>
         <div class=&quot;lote-opt-bar&quot;><div class=&quot;lote-opt-bar-fill&quot; style=&quot;width:${isAg?0:pct}%;background:${loteColor(st)}&quot;></div></div>
       </div>
       <div>
@@ -3366,7 +3589,10 @@ function renderLoteSelector(cod){
       selectedLote=lotes[idx];
       document.querySelectorAll('.lote-opt').forEach((el,i)=>el.classList.toggle('selected',i===idx));
       document.getElementById('m-lote-manual').value='';
-      if(selectedLote.tara_g)document.getElementById('m-tara').value=safeN(selectedLote.tara_g).toFixed(1);
+      if(selectedLote.tara_g){
+        document.getElementById('m-tara').value=safeN(selectedLote.tara_g).toFixed(1);
+        const te=document.getElementById('m-tara-entrada'); if(te) te.value=safeN(selectedLote.tara_g).toFixed(1);
+      }
       if(selectedLote.densidad)document.getElementById('m-densidad').value=safeN(selectedLote.densidad).toFixed(3);
       updatePreview();
     });
@@ -3411,10 +3637,10 @@ async function registrarMovimiento(tipoForzado){
   }
   // Si ingresó lote manual, es un lote nuevo — ignorar selectedLote
   if(loteManual) selectedLote=null;
-  let stockMl=0, pesoTotal=0, nFrascos=1, taraTotal=0, consumoMl=0, entradaMl=0;
+  let stockMl=0, pesoTotal=0, nFrascos=1, taraTotal=0, consumoMl=0, entradaMl=0, taraFrasco=0;
   if(isPesaje){
     const nf=safeN(document.getElementById('m-nfrascos').value,1)||1;
-    const tara=safeN(document.getElementById('m-tara').value,0);
+    const tara=safeN(document.getElementById('m-tara').value,0); taraFrasco=tara;
     const den=safeN(document.getElementById('m-densidad').value,1)||1;
     pesoTotal=safeN(document.getElementById('m-peso-total').value,0);
     if(!pesoTotal){toast('⚠️ Ingresa el peso total del frasco','var(--danger)');return;}
@@ -3425,6 +3651,9 @@ async function registrarMovimiento(tipoForzado){
     stockMl=safeN(document.getElementById('m-stock-ml').value,0);
     if(!stockMl&&tipo!=='BAJA / VENCIMIENTO'){toast('⚠️ Ingresa el stock en mL','var(--danger)');return;}
     nFrascos=safeN(document.getElementById('m-nfrascos2').value,1)||1;
+    const te=document.getElementById('m-tara-entrada');
+    taraFrasco=safeN(te?te.value:0,0);
+    taraTotal=taraFrasco*nFrascos;
     if(tipo==='ENTRADA'){entradaMl=stockMl;}
     else{consumoMl=safeN(selectedLote?.saldo||0)-stockMl;}
   }
@@ -3433,11 +3662,18 @@ async function registrarMovimiento(tipoForzado){
   const stockDiff=stockMl-(selectedLote?safeN(selectedLote.saldo):0);
   const newStockCod=prevStock+stockDiff;
   const clave=`${cod}|${lote}`;
+  const cadLoteEl=document.getElementById('m-caducidad-lote');
+  const denLoteEl=document.getElementById('m-densidad-lote');
+  const caducidadLote=cadLoteEl?(cadLoteEl.value||''):'';
+  const densidadLote=denLoteEl&&denLoteEl.value?safeN(denLoteEl.value, safeN(item.densidad,1)):safeN(item.densidad,1);
   const mov={
     clave,codigo:cod,reactivo:item.reactivo,lote,
-    densidad:safeN(item.densidad,1),
+    caducidad:caducidadLote,
+    fecha_caducidad:caducidadLote,
+    densidad:densidadLote,
     n_frascos:nFrascos,
     tara_total:taraTotal,
+    tara_g:Math.round(taraFrasco*100)/100,
     tipo,
     peso_total:pesoTotal,
     stock_ml:Math.round(stockMl*100)/100,
@@ -3459,7 +3695,7 @@ async function registrarMovimiento(tipoForzado){
     const icons={'ENTRADA':'📥','PESAJE':'⚖️','BAJA / VENCIMIENTO':'⚠️','AJUSTE':'🔧'};
     toast(`${icons[tipo]||'✅'} Guardado — ${item.reactivo} · ${stockMl.toFixed(1)} mL`);
     // Reset form
-    ['m-stock-ml','m-lote-manual','m-doc','m-obs','m-peso-total'].forEach(id=>document.getElementById(id).value='');
+    ['m-stock-ml','m-lote-manual','m-doc','m-obs','m-peso-total','m-tara-entrada','m-caducidad-lote','m-densidad-lote'].forEach(id=>{const el=document.getElementById(id); if(el) el.value='';});
     document.getElementById('stock-preview').style.display='none';
     document.getElementById('peso-result').style.display='none';
     selectedLote=null;
@@ -3852,6 +4088,119 @@ init();
 </script>
 
 <!-- CHANGELOG V1.1.15: Producción estable. Se actualiza identificación visible de versión estable sin modificar Firebase, datos, iframes ni lógica interna. Base recomendada para producción y futuras mejoras. -->
+
+
+<script>
+/* ENTERPRISE V2.0.4 - Editor de trazabilidad por lote/envase.
+   El botón Editar general se mantiene para la ficha maestra; este parche añade ✏️ Lote en cada lote. */
+(function(){
+  function patchFrame(frame){
+    try{
+      var w=frame.contentWindow, d=frame.contentDocument;
+      if(!w || !d || w.__LOTE_EDITOR_V203__) return;
+      w.__LOTE_EDITOR_V203__=true;
+      var app=frame.getAttribute('data-app')||'reactivos';
+      var movCol= app==='liquidos' ? 'liq_movimientos' : (app==='solidos' ? 'sol_movimientos' : 'movimientos');
+      var style=d.createElement('style');
+      style.textContent='.btn-lote-edit-v203{margin-left:auto;border:1px solid rgba(167,139,250,.35);background:rgba(167,139,250,.12);color:#a78bfa;border-radius:9px;padding:7px 10px;font-size:11px;font-weight:900;cursor:pointer;white-space:nowrap}.btn-lote-edit-v203:hover{border-color:#a78bfa}.lote-editor-note-v203{font-size:11px;color:#6b8fa8;line-height:1.35;margin:0 0 10px}.lote-editor-grid-v203{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lote-editor-grid-v203 .full{grid-column:1/-1}@media(max-width:650px){.lote-editor-grid-v203{grid-template-columns:1fr}.lote-editor-grid-v203 .full{grid-column:auto}}';
+      d.head.appendChild(style);
+      function toast(msg,color){ try{ w.toast ? w.toast(msg,color) : alert(msg); }catch(e){ alert(msg); } }
+      function ensureModal(){
+        var old=d.getElementById('ov-lote-v203'); if(old) return old;
+        var ov=d.createElement('div'); ov.className='overlay'; ov.id='ov-lote-v203';
+        ov.innerHTML='<div class="modal"><div class="mhdr"><button class="btn-close" id="le-close-v203">←</button><h2 id="le-title-v203">Editar lote</h2></div><div class="mbody"><div class="fsep">📦 Trazabilidad específica del lote / envase</div><p class="lote-editor-note-v203">Estos datos pertenecen al lote seleccionado, no a la ficha general del reactivo. Sirve cuando cada frasco tiene presentación, tara o caducidad diferente.</p><input type="hidden" id="le-cod-v203"><input type="hidden" id="le-lote-original-v203"><div class="lote-editor-grid-v203"><div class="fg"><label class="flbl">Lote *</label><input type="text" id="le-lote-v203"></div><div class="fg"><label class="flbl">Caducidad del lote</label><input type="date" id="le-cad-v203"></div><div class="fg"><label class="flbl">Presentación / capacidad</label><input type="number" id="le-pres-v203" step="0.01"></div><div class="fg"><label class="flbl">N° frascos/envases</label><input type="number" id="le-env-v203" min="0" step="1"></div><div class="fg"><label class="flbl">Tara 1 envase (g)</label><input type="number" id="le-tara-v203" min="0" step="0.01"></div><div class="fg"><label class="flbl">Densidad lote (g/mL, líquidos)</label><input type="number" id="le-dens-v203" min="0" step="0.001"></div><div class="fg"><label class="flbl">Marca / proveedor lote</label><input type="text" id="le-marca-v203"></div><div class="fg full"><label class="flbl">Observación del lote</label><textarea id="le-obs-v203" rows="3"></textarea></div></div></div><div class="mfoot"><button class="btn-primary" id="le-save-v203">✅ Guardar lote</button><button class="btn-ghost" id="le-cancel-v203">Cancelar</button></div></div>';
+        d.body.appendChild(ov);
+        d.getElementById('le-close-v203').onclick=d.getElementById('le-cancel-v203').onclick=function(){ ov.classList.remove('open'); };
+        d.getElementById('le-save-v203').onclick=saveLote;
+        return ov;
+      }
+      function getLote(cod,lote){
+        var arr=(w.LOTES&&w.LOTES[cod])||[];
+        return arr.find(function(x){return String(x.lote)===String(lote);})||null;
+      }
+      function openLoteEditor(cod,lote){
+        ensureModal();
+        var item=(w.INV||[]).find(function(x){return String(x.codigo)===String(cod);})||{};
+        var l=getLote(cod,lote)||{};
+        d.getElementById('le-title-v203').textContent='Editar lote: '+(lote||'');
+        d.getElementById('le-cod-v203').value=cod||'';
+        d.getElementById('le-lote-original-v203').value=lote||'';
+        d.getElementById('le-lote-v203').value=l.lote||lote||'';
+        d.getElementById('le-cad-v203').value=l.caducidad||l.fecha_caducidad||item.caducidad||'';
+        d.getElementById('le-pres-v203').value=(l.presentacion!==undefined?l.presentacion:(l.cant_inicial!==undefined?l.cant_inicial:(item.presentacion||'')));
+        d.getElementById('le-env-v203').value=l.envases||l.frascos||l.num_envases||'';
+        d.getElementById('le-tara-v203').value=l.tara_envase_g||l.tara||l.tara_g||'';
+        var densInp=d.getElementById('le-dens-v203'); if(densInp) densInp.value=l.densidad||item.densidad||'';
+        d.getElementById('le-marca-v203').value=l.marca||item.marca||'';
+        d.getElementById('le-obs-v203').value=l.obs_lote||l.obs||'';
+        d.getElementById('ov-lote-v203').classList.add('open');
+      }
+      async function saveLote(){
+        var cod=d.getElementById('le-cod-v203').value.trim();
+        var oldLote=d.getElementById('le-lote-original-v203').value.trim();
+        var newLote=d.getElementById('le-lote-v203').value.trim();
+        if(!cod||!oldLote||!newLote){toast('⛔ Código y lote son obligatorios','var(--danger)');return;}
+        var meta={
+          lote:newLote,
+          caducidad:d.getElementById('le-cad-v203').value||'',
+          fecha_caducidad:d.getElementById('le-cad-v203').value||'',
+          presentacion:Number(d.getElementById('le-pres-v203').value)||0,
+          envases:Number(d.getElementById('le-env-v203').value)||0,
+          frascos:Number(d.getElementById('le-env-v203').value)||0,
+          tara_envase_g:Number(d.getElementById('le-tara-v203').value)||0,
+          tara_g:Number(d.getElementById('le-tara-v203').value)||0,
+          densidad:(d.getElementById('le-dens-v203')&&d.getElementById('le-dens-v203').value)?Number(d.getElementById('le-dens-v203').value):undefined,
+          marca:d.getElementById('le-marca-v203').value.trim(),
+          obs_lote:d.getElementById('le-obs-v203').value.trim(),
+          loteEditadoAt:new Date().toISOString()
+        };
+        var arr=(w.LOTES&&w.LOTES[cod])||[];
+        arr.forEach(function(l){ if(String(l.lote)===String(oldLote)){ Object.assign(l,meta); } });
+        (w.MOVS||[]).forEach(function(m){ if(String(m.codigo)===cod && String(m.lote)===oldLote){ Object.assign(m,meta,{lote:newLote,clave:cod+'|'+newLote}); } });
+        try{
+          if(w.db){
+            var snap=await w.db.collection(movCol).where('codigo','==',cod).where('lote','==',oldLote).get();
+            var batch=w.db.batch(), n=0;
+            snap.forEach(function(doc){ batch.set(doc.ref, Object.assign({},meta,{clave:cod+'|'+newLote}), {merge:true}); n++; });
+            if(n>0) await batch.commit();
+          }
+        }catch(e){ console.warn('No se pudo actualizar Firebase del lote',e); toast('⚠️ Guardado visual/local. Revisa conexión Firebase.','var(--warn)'); }
+        try{ if(typeof w.renderInv==='function') w.renderInv(); if(typeof w.renderLoteSelector==='function'){ var sel=d.getElementById('m-reactivo'); if(sel&&sel.value===cod) w.renderLoteSelector(cod); } }catch(e){}
+        d.getElementById('ov-lote-v203').classList.remove('open');
+        toast('✅ Lote actualizado: '+newLote,'var(--green)');
+      }
+      function addButtons(){
+        try{
+          d.querySelectorAll('.lote-row').forEach(function(row){
+            if(row.querySelector('.btn-lote-edit-v203')) return;
+            var card=row.closest('.card'); if(!card || !card.id || !card.id.startsWith('ic-')) return;
+            var idx=Number(card.id.replace('ic-',''));
+            var item=(w.INV||[])[idx]; if(!item) return;
+            var loteText=(row.querySelector('.lote-num')||{}).textContent||'';
+            var lote=(loteText.replace('Lote:','').replace('(agotado)','').trim().split(/\s+/)[0]||'').trim();
+            if(!lote) return;
+            var btn=d.createElement('button'); btn.type='button'; btn.className='btn-lote-edit-v203'; btn.textContent='✏️ Lote';
+            btn.onclick=function(ev){ ev.stopPropagation(); openLoteEditor(item.codigo,lote); };
+            row.appendChild(btn);
+          });
+        }catch(e){ console.warn(e); }
+      }
+      var old=w.renderInv;
+      if(typeof old==='function'){
+        w.renderInv=function(){ var r=old.apply(this,arguments); setTimeout(addButtons,80); return r; };
+      }
+      setInterval(addButtons,1500);
+      setTimeout(addButtons,1200);
+    }catch(e){ console.warn('Lote editor patch error',e); }
+  }
+  function patchAll(){ document.querySelectorAll('.appframe').forEach(patchFrame); }
+  window.addEventListener('DOMContentLoaded',function(){ setTimeout(patchAll,1000); setTimeout(patchAll,3500); });
+  setInterval(patchAll,4000);
+})();
+</script>
+
+<!-- CHANGELOG ENTERPRISE V2.0.4: Se agrega editor específico por lote/envase para Reactivos, Líquidos y Sólidos. El botón Editar general queda solo para ficha maestra; cada lote ahora permite editar caducidad, presentación, N° envases, tara y observación para trazabilidad. -->
+
 </body>
 </html>"></iframe>
   <iframe class="appframe" id="frame-solidos" data-app="solidos" srcdoc="<!DOCTYPE html>
@@ -4239,7 +4588,13 @@ table.kmov-full td{padding:7px 8px;border-top:1px solid var(--border);}
         <div id=&quot;ml-section&quot;>
           <div class=&quot;form-row&quot;>
             <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Stock en g *</label><input type=&quot;number&quot; id=&quot;m-stock-ml&quot; step=&quot;0.1&quot; min=&quot;0&quot; placeholder=&quot;g&quot; oninput=&quot;updatePreview()&quot;></div>
-            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>N° Frascos</label><input type=&quot;number&quot; id=&quot;m-nfrascos2&quot; min=&quot;1&quot; value=&quot;1&quot;></div>
+            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>N° Frascos / Envases</label><input type=&quot;number&quot; id=&quot;m-nfrascos2&quot; min=&quot;1&quot; value=&quot;1&quot;></div>
+          </div>
+          <div class=&quot;form-row full&quot;>
+            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Tara 1 envase (g) — se guarda con el lote</label><input type=&quot;number&quot; id=&quot;m-tara-entrada&quot; step=&quot;0.1&quot; min=&quot;0&quot; placeholder=&quot;Ej: 82.3&quot;></div>
+          </div>
+          <div class=&quot;form-row full&quot;>
+            <div class=&quot;fg&quot;><label class=&quot;flbl&quot;>Fecha de vencimiento del lote</label><input type=&quot;date&quot; id=&quot;m-caducidad-lote&quot;></div>
           </div>
         </div>
 
@@ -4551,7 +4906,9 @@ function recalcFromMovs(){
     if(cs!==null)codigoSaldoMap[cod]=cs;
     if(m.clave){
       const saldo=getLoteSaldo(m);
-      const entry={saldo,lote:m.lote,codigo:cod,reactivo:m.reactivo,fecha:m.fecha};
+      const taraG=(m.tara_g!==undefined&&m.tara_g!==null)?Number(m.tara_g):((m.tara_total&&m.n_frascos)?Number(m.tara_total)/Number(m.n_frascos):undefined);
+      const stockInicial=Number(m.entrada_ml||m.entrada_g||m.stock_ml||m.stock_g||m.cantidad||saldo||0);
+      const entry={saldo,lote:m.lote,codigo:cod,reactivo:m.reactivo,fecha:m.fecha,tara_g:taraG,n_frascos:m.n_frascos,stock_inicial:stockInicial,frasco_ml:stockInicial,presentacion:m.presentacion||'',caducidad:m.caducidad||m.fecha_caducidad||'',fecha_caducidad:m.fecha_caducidad||m.caducidad||'',densidad:m.densidad};
       loteSaldoMap[m.clave]=entry;
       const key=cod+'|'+m.lote;
       if(!loteNumMap[key]||fechaOrden(m.fecha)>=fechaOrden(loteNumMap[key].fecha||'')){
@@ -4574,7 +4931,13 @@ function recalcFromMovs(){
         best=byExact||byLoteNum;
       }
       const saldo=best!==undefined?best.saldo:(sl.saldo??0);
-      return{...sl,saldo:Math.round(saldo*1000)/1000,fecha_ultimo:best?.fecha||sl.fecha_ultimo||'',agotado:saldo<=0};
+      return{...sl,
+        tara_g:(best?.tara_g!==undefined&&best?.tara_g!==null)?best.tara_g:sl.tara_g,
+        n_frascos:best?.n_frascos||sl.n_frascos,
+        stock_inicial:best?.stock_inicial||sl.stock_inicial,
+        frasco_ml:best?.frasco_ml||sl.frasco_ml,
+        presentacion:best?.presentacion||sl.presentacion,
+        saldo:Math.round(saldo*1000)/1000,fecha_ultimo:best?.fecha||sl.fecha_ultimo||'',agotado:saldo<=0};
     });
     LOTES[cod].sort((a,b)=>(a.agotado?1:0)-(b.agotado?1:0)||b.saldo-a.saldo);
   });
@@ -4588,7 +4951,7 @@ function recalcFromMovs(){
     const cod=data.codigo;
     if(!LOTES[cod])LOTES[cod]=[];
     if(!LOTES[cod].find(l=>l.lote===data.lote)&&data.saldo>0){
-      LOTES[cod].push({clave:cod+'|'+data.lote,lote:data.lote,saldo:data.saldo,fecha_ultimo:data.fecha,agotado:false});
+      LOTES[cod].push({clave:cod+'|'+data.lote,lote:data.lote,saldo:data.saldo,fecha_ultimo:data.fecha,agotado:false,tara_g:data.tara_g,n_frascos:data.n_frascos,stock_inicial:data.stock_inicial,frasco_ml:data.frasco_ml,presentacion:data.presentacion,caducidad:data.caducidad||data.fecha_caducidad||'',fecha_caducidad:data.fecha_caducidad||data.caducidad||'',densidad:data.densidad});
       LOTES[cod].sort((a,b)=>(a.agotado?1:0)-(b.agotado?1:0)||b.saldo-a.saldo);
       const item=INV.find(i=>i.codigo===cod);
       if(item)item.stock=Math.round(LOTES[cod].filter(l=>!l.agotado).reduce((a,l)=>a+(l.saldo||0),0)*100)/100;
@@ -4734,7 +5097,7 @@ function renderInv(){
             <div class=&quot;lote-dot ${isAg?'bad':lst}&quot;></div>
             <div class=&quot;lote-info&quot;>
               <div class=&quot;lote-num&quot;>Lote: ${l.lote} ${isAg?'<span style=&quot;font-size:9px;color:var(--muted)&quot;>(agotado)</span>':''}</div>
-              <div class=&quot;lote-sub&quot;>Últ. mov: ${l.fecha_ultimo||'—'} ${l.presentacion?'· '+l.presentacion:''}</div>
+              <div class=&quot;lote-sub&quot;>Últ. mov: ${l.fecha_ultimo||'—'} ${l.presentacion?'· '+l.presentacion:''} ${l.caducidad||l.fecha_caducidad?'· Vence: '+(l.caducidad||l.fecha_caducidad):''} ${l.tara_g?'· Tara: '+safeN(l.tara_g).toFixed(1)+' g':''} ${l.n_frascos?'· Envases: '+l.n_frascos:''}</div>
               <div class=&quot;lote-bar-track&quot;><div class=&quot;lote-bar-fill&quot; style=&quot;width:${isAg?0:lpct}%;background:${isAg?'var(--muted)':loteColor(lst)}&quot;></div></div>
             </div>
             <div class=&quot;lote-stock&quot; style=&quot;color:${isAg?'var(--muted)':loteColor(lst)}&quot;>${safeN(l.saldo).toFixed(1)} g</div>
@@ -4915,7 +5278,7 @@ function renderLoteSelector(cod){
       <div class=&quot;lote-opt-dot&quot; style=&quot;background:${isAg?'var(--muted)':loteColor(st)}&quot;></div>
       <div class=&quot;lote-opt-info&quot;>
         <div class=&quot;lote-opt-num&quot;>Lote: <b>${l.lote}</b> ${isAg?'<span style=&quot;font-size:9px;color:var(--muted)&quot;>(agotado)</span>':''}</div>
-        <div class=&quot;lote-opt-sub&quot;>Últ. mov: ${l.fecha_ultimo||'—'} ${l.presentacion?'· '+l.presentacion:''}</div>
+        <div class=&quot;lote-opt-sub&quot;>Últ. mov: ${l.fecha_ultimo||'—'} ${l.presentacion?'· '+l.presentacion:''} ${l.caducidad||l.fecha_caducidad?'· Vence: '+(l.caducidad||l.fecha_caducidad):''} ${l.tara_g?'· Tara: '+safeN(l.tara_g).toFixed(1)+' g':''} ${l.n_frascos?'· Envases: '+l.n_frascos:''}</div>
         <div class=&quot;lote-opt-bar&quot;><div class=&quot;lote-opt-bar-fill&quot; style=&quot;width:${isAg?0:pct}%;background:${loteColor(st)}&quot;></div></div>
       </div>
       <div>
@@ -4927,7 +5290,12 @@ function renderLoteSelector(cod){
       selectedLote=lotes[idx];
       document.querySelectorAll('.lote-opt').forEach((el,i)=>el.classList.toggle('selected',i===idx));
       document.getElementById('m-lote-manual').value='';
-      if(selectedLote.tara_g)document.getElementById('m-tara').value=safeN(selectedLote.tara_g).toFixed(1);
+      if(selectedLote.tara_g){
+        document.getElementById('m-tara').value=safeN(selectedLote.tara_g).toFixed(1);
+        const te=document.getElementById('m-tara-entrada'); if(te) te.value=safeN(selectedLote.tara_g).toFixed(1);
+      }
+      const cadEl=document.getElementById('m-caducidad-lote'); if(cadEl) cadEl.value=selectedLote.caducidad||selectedLote.fecha_caducidad||'';
+      const denEl=document.getElementById('m-densidad-lote'); if(denEl) denEl.value=selectedLote.densidad||'';
       updatePreview();
     });
     sel.appendChild(div);
@@ -4971,10 +5339,10 @@ async function registrarMovimiento(tipoForzado){
   }
   // Si ingresó lote manual, es un lote nuevo — ignorar selectedLote
   if(loteManual) selectedLote=null;
-  let stockMl=0, pesoTotal=0, nFrascos=1, taraTotal=0, consumoMl=0, entradaMl=0;
+  let stockMl=0, pesoTotal=0, nFrascos=1, taraTotal=0, consumoMl=0, entradaMl=0, taraFrasco=0;
   if(isPesaje){
     const nf=safeN(document.getElementById('m-nfrascos').value,1)||1;
-    const tara=safeN(document.getElementById('m-tara').value,0);
+    const tara=safeN(document.getElementById('m-tara').value,0); taraFrasco=tara;
     pesoTotal=safeN(document.getElementById('m-peso-total').value,0);
     if(!pesoTotal){toast('⚠️ Ingresa el peso total del frasco','var(--danger)');return;}
     taraTotal=tara*nf; nFrascos=nf;
@@ -4984,6 +5352,9 @@ async function registrarMovimiento(tipoForzado){
     stockMl=safeN(document.getElementById('m-stock-ml').value,0);
     if(!stockMl&&tipo!=='BAJA / VENCIMIENTO'){toast('⚠️ Ingresa el stock en g','var(--danger)');return;}
     nFrascos=safeN(document.getElementById('m-nfrascos2').value,1)||1;
+    const te=document.getElementById('m-tara-entrada');
+    taraFrasco=safeN(te?te.value:0,0);
+    taraTotal=taraFrasco*nFrascos;
     if(tipo==='ENTRADA'){entradaMl=stockMl;}
     else{consumoMl=safeN(selectedLote?.saldo||0)-stockMl;}
   }
@@ -4992,11 +5363,18 @@ async function registrarMovimiento(tipoForzado){
   const stockDiff=stockMl-(selectedLote?safeN(selectedLote.saldo):0);
   const newStockCod=prevStock+stockDiff;
   const clave=`${cod}|${lote}`;
+  const cadLoteEl=document.getElementById('m-caducidad-lote');
+  const denLoteEl=document.getElementById('m-densidad-lote');
+  const caducidadLote=cadLoteEl?(cadLoteEl.value||''):'';
+  const densidadLote=denLoteEl&&denLoteEl.value?safeN(denLoteEl.value, safeN(item.densidad,1)):safeN(item.densidad,1);
   const mov={
     clave,codigo:cod,reactivo:item.reactivo,lote,
-    densidad:safeN(item.densidad,1),
+    caducidad:caducidadLote,
+    fecha_caducidad:caducidadLote,
+    densidad:densidadLote,
     n_frascos:nFrascos,
     tara_total:taraTotal,
+    tara_g:Math.round(taraFrasco*100)/100,
     tipo,
     peso_total:pesoTotal,
     stock_g:Math.round(stockMl*100)/100,
@@ -5021,7 +5399,7 @@ async function registrarMovimiento(tipoForzado){
     const icons={'ENTRADA':'📥','PESAJE':'⚖️','BAJA / VENCIMIENTO':'⚠️','AJUSTE':'🔧'};
     toast(`${icons[tipo]||'✅'} Guardado — ${item.reactivo} · ${stockMl.toFixed(2)} g`);
     // Reset form
-    ['m-stock-ml','m-lote-manual','m-doc','m-obs','m-peso-total'].forEach(id=>document.getElementById(id).value='');
+    ['m-stock-ml','m-lote-manual','m-doc','m-obs','m-peso-total','m-tara-entrada','m-caducidad-lote','m-densidad-lote'].forEach(id=>{const el=document.getElementById(id); if(el) el.value='';});
     document.getElementById('stock-preview').style.display='none';
     document.getElementById('peso-result').style.display='none';
     selectedLote=null;
@@ -5414,6 +5792,119 @@ init();
 </script>
 
 <!-- CHANGELOG V1.1.15: Producción estable. Se actualiza identificación visible de versión estable sin modificar Firebase, datos, iframes ni lógica interna. Base recomendada para producción y futuras mejoras. -->
+
+
+<script>
+/* ENTERPRISE V2.0.4 - Editor de trazabilidad por lote/envase.
+   El botón Editar general se mantiene para la ficha maestra; este parche añade ✏️ Lote en cada lote. */
+(function(){
+  function patchFrame(frame){
+    try{
+      var w=frame.contentWindow, d=frame.contentDocument;
+      if(!w || !d || w.__LOTE_EDITOR_V203__) return;
+      w.__LOTE_EDITOR_V203__=true;
+      var app=frame.getAttribute('data-app')||'reactivos';
+      var movCol= app==='liquidos' ? 'liq_movimientos' : (app==='solidos' ? 'sol_movimientos' : 'movimientos');
+      var style=d.createElement('style');
+      style.textContent='.btn-lote-edit-v203{margin-left:auto;border:1px solid rgba(167,139,250,.35);background:rgba(167,139,250,.12);color:#a78bfa;border-radius:9px;padding:7px 10px;font-size:11px;font-weight:900;cursor:pointer;white-space:nowrap}.btn-lote-edit-v203:hover{border-color:#a78bfa}.lote-editor-note-v203{font-size:11px;color:#6b8fa8;line-height:1.35;margin:0 0 10px}.lote-editor-grid-v203{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lote-editor-grid-v203 .full{grid-column:1/-1}@media(max-width:650px){.lote-editor-grid-v203{grid-template-columns:1fr}.lote-editor-grid-v203 .full{grid-column:auto}}';
+      d.head.appendChild(style);
+      function toast(msg,color){ try{ w.toast ? w.toast(msg,color) : alert(msg); }catch(e){ alert(msg); } }
+      function ensureModal(){
+        var old=d.getElementById('ov-lote-v203'); if(old) return old;
+        var ov=d.createElement('div'); ov.className='overlay'; ov.id='ov-lote-v203';
+        ov.innerHTML='<div class="modal"><div class="mhdr"><button class="btn-close" id="le-close-v203">←</button><h2 id="le-title-v203">Editar lote</h2></div><div class="mbody"><div class="fsep">📦 Trazabilidad específica del lote / envase</div><p class="lote-editor-note-v203">Estos datos pertenecen al lote seleccionado, no a la ficha general del reactivo. Sirve cuando cada frasco tiene presentación, tara o caducidad diferente.</p><input type="hidden" id="le-cod-v203"><input type="hidden" id="le-lote-original-v203"><div class="lote-editor-grid-v203"><div class="fg"><label class="flbl">Lote *</label><input type="text" id="le-lote-v203"></div><div class="fg"><label class="flbl">Caducidad del lote</label><input type="date" id="le-cad-v203"></div><div class="fg"><label class="flbl">Presentación / capacidad</label><input type="number" id="le-pres-v203" step="0.01"></div><div class="fg"><label class="flbl">N° frascos/envases</label><input type="number" id="le-env-v203" min="0" step="1"></div><div class="fg"><label class="flbl">Tara 1 envase (g)</label><input type="number" id="le-tara-v203" min="0" step="0.01"></div><div class="fg"><label class="flbl">Densidad lote (g/mL, líquidos)</label><input type="number" id="le-dens-v203" min="0" step="0.001"></div><div class="fg"><label class="flbl">Marca / proveedor lote</label><input type="text" id="le-marca-v203"></div><div class="fg full"><label class="flbl">Observación del lote</label><textarea id="le-obs-v203" rows="3"></textarea></div></div></div><div class="mfoot"><button class="btn-primary" id="le-save-v203">✅ Guardar lote</button><button class="btn-ghost" id="le-cancel-v203">Cancelar</button></div></div>';
+        d.body.appendChild(ov);
+        d.getElementById('le-close-v203').onclick=d.getElementById('le-cancel-v203').onclick=function(){ ov.classList.remove('open'); };
+        d.getElementById('le-save-v203').onclick=saveLote;
+        return ov;
+      }
+      function getLote(cod,lote){
+        var arr=(w.LOTES&&w.LOTES[cod])||[];
+        return arr.find(function(x){return String(x.lote)===String(lote);})||null;
+      }
+      function openLoteEditor(cod,lote){
+        ensureModal();
+        var item=(w.INV||[]).find(function(x){return String(x.codigo)===String(cod);})||{};
+        var l=getLote(cod,lote)||{};
+        d.getElementById('le-title-v203').textContent='Editar lote: '+(lote||'');
+        d.getElementById('le-cod-v203').value=cod||'';
+        d.getElementById('le-lote-original-v203').value=lote||'';
+        d.getElementById('le-lote-v203').value=l.lote||lote||'';
+        d.getElementById('le-cad-v203').value=l.caducidad||l.fecha_caducidad||item.caducidad||'';
+        d.getElementById('le-pres-v203').value=(l.presentacion!==undefined?l.presentacion:(l.cant_inicial!==undefined?l.cant_inicial:(item.presentacion||'')));
+        d.getElementById('le-env-v203').value=l.envases||l.frascos||l.num_envases||'';
+        d.getElementById('le-tara-v203').value=l.tara_envase_g||l.tara||l.tara_g||'';
+        var densInp=d.getElementById('le-dens-v203'); if(densInp) densInp.value=l.densidad||item.densidad||'';
+        d.getElementById('le-marca-v203').value=l.marca||item.marca||'';
+        d.getElementById('le-obs-v203').value=l.obs_lote||l.obs||'';
+        d.getElementById('ov-lote-v203').classList.add('open');
+      }
+      async function saveLote(){
+        var cod=d.getElementById('le-cod-v203').value.trim();
+        var oldLote=d.getElementById('le-lote-original-v203').value.trim();
+        var newLote=d.getElementById('le-lote-v203').value.trim();
+        if(!cod||!oldLote||!newLote){toast('⛔ Código y lote son obligatorios','var(--danger)');return;}
+        var meta={
+          lote:newLote,
+          caducidad:d.getElementById('le-cad-v203').value||'',
+          fecha_caducidad:d.getElementById('le-cad-v203').value||'',
+          presentacion:Number(d.getElementById('le-pres-v203').value)||0,
+          envases:Number(d.getElementById('le-env-v203').value)||0,
+          frascos:Number(d.getElementById('le-env-v203').value)||0,
+          tara_envase_g:Number(d.getElementById('le-tara-v203').value)||0,
+          tara_g:Number(d.getElementById('le-tara-v203').value)||0,
+          densidad:(d.getElementById('le-dens-v203')&&d.getElementById('le-dens-v203').value)?Number(d.getElementById('le-dens-v203').value):undefined,
+          marca:d.getElementById('le-marca-v203').value.trim(),
+          obs_lote:d.getElementById('le-obs-v203').value.trim(),
+          loteEditadoAt:new Date().toISOString()
+        };
+        var arr=(w.LOTES&&w.LOTES[cod])||[];
+        arr.forEach(function(l){ if(String(l.lote)===String(oldLote)){ Object.assign(l,meta); } });
+        (w.MOVS||[]).forEach(function(m){ if(String(m.codigo)===cod && String(m.lote)===oldLote){ Object.assign(m,meta,{lote:newLote,clave:cod+'|'+newLote}); } });
+        try{
+          if(w.db){
+            var snap=await w.db.collection(movCol).where('codigo','==',cod).where('lote','==',oldLote).get();
+            var batch=w.db.batch(), n=0;
+            snap.forEach(function(doc){ batch.set(doc.ref, Object.assign({},meta,{clave:cod+'|'+newLote}), {merge:true}); n++; });
+            if(n>0) await batch.commit();
+          }
+        }catch(e){ console.warn('No se pudo actualizar Firebase del lote',e); toast('⚠️ Guardado visual/local. Revisa conexión Firebase.','var(--warn)'); }
+        try{ if(typeof w.renderInv==='function') w.renderInv(); if(typeof w.renderLoteSelector==='function'){ var sel=d.getElementById('m-reactivo'); if(sel&&sel.value===cod) w.renderLoteSelector(cod); } }catch(e){}
+        d.getElementById('ov-lote-v203').classList.remove('open');
+        toast('✅ Lote actualizado: '+newLote,'var(--green)');
+      }
+      function addButtons(){
+        try{
+          d.querySelectorAll('.lote-row').forEach(function(row){
+            if(row.querySelector('.btn-lote-edit-v203')) return;
+            var card=row.closest('.card'); if(!card || !card.id || !card.id.startsWith('ic-')) return;
+            var idx=Number(card.id.replace('ic-',''));
+            var item=(w.INV||[])[idx]; if(!item) return;
+            var loteText=(row.querySelector('.lote-num')||{}).textContent||'';
+            var lote=(loteText.replace('Lote:','').replace('(agotado)','').trim().split(/\s+/)[0]||'').trim();
+            if(!lote) return;
+            var btn=d.createElement('button'); btn.type='button'; btn.className='btn-lote-edit-v203'; btn.textContent='✏️ Lote';
+            btn.onclick=function(ev){ ev.stopPropagation(); openLoteEditor(item.codigo,lote); };
+            row.appendChild(btn);
+          });
+        }catch(e){ console.warn(e); }
+      }
+      var old=w.renderInv;
+      if(typeof old==='function'){
+        w.renderInv=function(){ var r=old.apply(this,arguments); setTimeout(addButtons,80); return r; };
+      }
+      setInterval(addButtons,1500);
+      setTimeout(addButtons,1200);
+    }catch(e){ console.warn('Lote editor patch error',e); }
+  }
+  function patchAll(){ document.querySelectorAll('.appframe').forEach(patchFrame); }
+  window.addEventListener('DOMContentLoaded',function(){ setTimeout(patchAll,1000); setTimeout(patchAll,3500); });
+  setInterval(patchAll,4000);
+})();
+</script>
+
+<!-- CHANGELOG ENTERPRISE V2.0.4: Se agrega editor específico por lote/envase para Reactivos, Líquidos y Sólidos. El botón Editar general queda solo para ficha maestra; cada lote ahora permite editar caducidad, presentación, N° envases, tara y observación para trazabilidad. -->
+
 </body>
 </html>"></iframe>
 </div>
@@ -6275,8 +6766,7 @@ updateBackupStatus();
   function htmlTable(rows){
     var headers=['Modulo','Codigo','Producto','Unidad','Stock actual','Stock minimo','Consumo mensual','Cantidad sugerida','Prioridad','Proveedor','Motivo','Estado','Caducidad','Dias vencimiento','Estado vencimiento'];
     var trs='<tr>'+headers.map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr>'+rows.map(function(r){return '<tr><td>'+esc(r.modulo)+'</td><td>'+esc(r.codigo)+'</td><td>'+esc(r.producto)+'</td><td>'+esc(r.unidad)+'</td><td>'+fmt(r.stock_actual)+'</td><td>'+fmt(r.stock_minimo)+'</td><td>'+fmt(r.consumo_mensual)+'</td><td>'+fmt(r.cantidad_sugerida)+'</td><td>'+esc(r.prioridad)+'</td><td>'+esc(r.proveedor)+'</td><td>'+esc(r.motivo)+'</td><td>'+esc(r.estado)+'</td><td>'+esc(r.caducidad)+'</td><td>'+esc(r.dias_vencimiento)+'</td><td>'+esc(r.estado_vencimiento)+'</td></tr>';}).join('');
-    return '<html><head><meta charset="UTF-8"></head><body><table border="1">'+trs+'</table><!-- CHANGELOG V1.1.15: Producción estable. Se actualiza identificación visible de versión estable sin modificar Firebase, datos, iframes ni lógica interna. Base recomendada para producción y futuras mejoras. -->
-</body></html>';
+    return '<html><head><meta charset="UTF-8"></head><body><table border="1">'+trs+'</table></body></html>';
   }
   window.openPurchasesERP=function(){var ov=$('purchase-overlay'); if(ov){ov.style.display='flex'; ov.classList.add('open');} analizar();};
   window.closePurchasesERP=function(){var ov=$('purchase-overlay'); if(ov){ov.classList.remove('open'); ov.style.display='none';}};
@@ -6313,8 +6803,7 @@ updateBackupStatus();
   function suggestions(inv,cons){var rows=[]; inv.forEach(function(i){var consumo=cons[i.codigo]||0; var exp=expInfo(i.caducidad); var pr=''; var motivos=[]; var sug=0; if(i.stock<=0){pr='Alta'; motivos.push('Sin stock'); sug=Math.max(i.minimo*2,consumo*2,1);} else if(i.minimo>0 && i.stock<i.minimo){pr='Alta'; motivos.push('Stock bajo mínimo'); sug=Math.max(i.minimo*2-i.stock,consumo*2-i.stock,1);} else if(consumo>0 && i.stock<consumo*1.5){pr='Media'; motivos.push('Consumo alto'); sug=Math.max(consumo*2-i.stock,1);} else if(i.minimo>0 && i.stock<=i.minimo*1.25){pr='Baja'; motivos.push('Cerca del mínimo'); sug=Math.max(i.minimo*2-i.stock,1);} if(exp.key==='vencido'){if(prioRank(pr)<3) pr='Alta'; motivos.push('Vencido'); sug=Math.max(sug,i.minimo||consumo||1);} else if(exp.key==='30'){if(prioRank(pr)<3) pr='Alta'; motivos.push('Vence ≤30 días'); sug=Math.max(sug,i.minimo||consumo||1);} else if(exp.key==='90'){if(prioRank(pr)<2) pr='Media'; motivos.push('Vence ≤90 días'); sug=Math.max(sug,Math.ceil(consumo*1.5)||0);} if(pr){rows.push({codigo:i.codigo,producto:i.producto,stock:i.stock,minimo:i.minimo,consumo:consumo,caducidad:i.caducidad||'Sin fecha',vencimiento:exp.estado,dias:exp.dias==null?'—':exp.dias,prioridad:pr,sugerida:Math.ceil(Math.max(sug,0)),proveedor:i.proveedor,motivo:motivos.join(' + ')});}}); rows.sort(function(a,b){return prioRank(b.prioridad)-prioRank(a.prioridad) || b.sugerida-a.sugerida || a.producto.localeCompare(b.producto);}); return rows;}
   async function analyze(){var content=$('exec-content'); if(content) content.innerHTML='<div class="exec-note">Cargando resumen gerencial de '+esc(activeLabel())+'...</div>'; var month=($('exec-month')&&$('exec-month').value)||monthNow(); if($('exec-month')&&!$('exec-month').value) $('exec-month').value=month; try{var inv=await readInv(); var movs=await readMovs(month); var entradas=0,salidas=0,cons={},name={}; movs.forEach(function(m){if(m.tipo==='Entrada') entradas+=m.cantidad; if(m.tipo==='Salida'){salidas+=m.cantidad; cons[m.codigo]=(cons[m.codigo]||0)+m.cantidad; name[m.codigo]=m.reactivo;}}); var stockCrit=inv.filter(function(i){return i.minimo>0 && i.stock<i.minimo;}).length; var sinStock=inv.filter(function(i){return i.stock<=0;}).length; var vencidos=0,v30=0,v90=0,sinFecha=0; inv.forEach(function(i){var e=expInfo(i.caducidad); if(e.key==='vencido') vencidos++; else if(e.key==='30') v30++; else if(e.key==='90') v90++; else if(e.key==='sin') sinFecha++;}); var compras=suggestions(inv,cons); var topCons=Object.keys(cons).map(function(c){return {codigo:c,producto:(inv.find(function(i){return i.codigo===c;})||{}).producto||name[c]||c,cantidad:cons[c]};}).sort(function(a,b){return b.cantidad-a.cantidad;}).slice(0,8); window.__EXEC_DATA_V114={modulo:activeLabel(),mes:month,inv:inv,movs:movs,compras:compras,topCons:topCons,kpis:{total:inv.length,stockCrit:stockCrit,sinStock:sinStock,vencidos:vencidos,v30:v30,v90:v90,sinFecha:sinFecha,entradas:entradas,salidas:salidas,compras:compras.length}}; render(); try{ if(typeof auditERP==='function') auditERP('Dashboard gerencial','Consulta resumen '+activeLabel()); }catch(e){} }catch(err){if(content) content.innerHTML='<div class="exec-note" style="color:#ef4444">No se pudo cargar el Dashboard Gerencial: '+esc(err.message||err)+'</div>';}}
   function render(){var d=window.__EXEC_DATA_V114||{}; var k=d.kpis||{}; var compras=(d.compras||[]).slice(0,10); var top=(d.topCons||[]); var content=$('exec-content'); if(!content) return; function card(cls,num,lbl){return '<div class="exec-card '+cls+'"><b>'+esc(num)+'</b><span>'+esc(lbl)+'</span></div>';} var html='<div class="exec-grid">'+card('blue',k.total||0,'Ítems inventario')+card('bad',k.stockCrit||0,'Stock crítico')+card('bad',k.vencidos||0,'Vencidos')+card('warn',(k.v30||0)+(k.v90||0),'Por vencer ≤90 días')+card('blue',fmt(k.entradas||0),'Entradas mes')+card('warn',fmt(k.salidas||0),'Salidas mes')+card('good',k.compras||0,'Sugerencias compra')+card('',k.sinFecha||0,'Sin caducidad')+'</div>'; html+='<div class="exec-section-title">🛒 Top sugerencias de compra</div><div class="exec-table-wrap"><table class="exec-table"><thead><tr><th>Prioridad</th><th>Producto</th><th>Código</th><th>Stock</th><th>Mínimo</th><th>Consumo</th><th>Sugerida</th><th>Vencimiento</th><th>Motivo</th></tr></thead><tbody>'; html+=compras.length?compras.map(function(r){return '<tr><td><span class="exec-badge '+r.prioridad.toLowerCase()+'">'+esc(r.prioridad)+'</span></td><td>'+esc(r.producto)+'</td><td>'+esc(r.codigo)+'</td><td class="num">'+fmt(r.stock)+'</td><td class="num">'+fmt(r.minimo)+'</td><td class="num">'+fmt(r.consumo)+'</td><td class="num">'+fmt(r.sugerida)+'</td><td>'+esc(r.vencimiento)+'</td><td>'+esc(r.motivo)+'</td></tr>';}).join(''):'<tr><td colspan="9" style="text-align:center;color:#8fb3cc;padding:18px">Sin sugerencias de compra críticas para este mes.</td></tr>'; html+='</tbody></table></div>'; html+='<div class="exec-section-title">📈 Mayor consumo del mes</div><div class="exec-table-wrap"><table class="exec-table"><thead><tr><th>Producto</th><th>Código</th><th>Consumo</th></tr></thead><tbody>'; html+=top.length?top.map(function(r){return '<tr><td>'+esc(r.producto)+'</td><td>'+esc(r.codigo)+'</td><td class="num">'+fmt(r.cantidad)+'</td></tr>';}).join(''):'<tr><td colspan="3" style="text-align:center;color:#8fb3cc;padding:18px">Sin salidas registradas en el mes seleccionado.</td></tr>'; html+='</tbody></table></div>'; content.innerHTML=html;}
-  function excelHtml(d){d=d||window.__EXEC_DATA_V114||{}; var k=d.kpis||{}; var rows=[['Modulo',d.modulo||''],['Mes',d.mes||''],['Items inventario',k.total||0],['Stock critico',k.stockCrit||0],['Sin stock',k.sinStock||0],['Vencidos',k.vencidos||0],['Por vencer 30 dias',k.v30||0],['Por vencer 90 dias',k.v90||0],['Entradas mes',k.entradas||0],['Salidas mes',k.salidas||0],['Sugerencias compra',k.compras||0]]; var html='<html><head><meta charset="UTF-8"></head><body><h2>Dashboard Gerencial Inventario PSI</h2><table border="1">'+rows.map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>';}).join('')+'</table><h3>Sugerencias de compra</h3><table border="1"><tr><th>Prioridad</th><th>Producto</th><th>Código</th><th>Stock</th><th>Mínimo</th><th>Consumo</th><th>Sugerida</th><th>Vencimiento</th><th>Motivo</th></tr>'+(d.compras||[]).map(function(r){return '<tr><td>'+esc(r.prioridad)+'</td><td>'+esc(r.producto)+'</td><td>'+esc(r.codigo)+'</td><td>'+fmt(r.stock)+'</td><td>'+fmt(r.minimo)+'</td><td>'+fmt(r.consumo)+'</td><td>'+fmt(r.sugerida)+'</td><td>'+esc(r.vencimiento)+'</td><td>'+esc(r.motivo)+'</td></tr>';}).join('')+'</table><h3>Mayor consumo</h3><table border="1"><tr><th>Producto</th><th>Código</th><th>Consumo</th></tr>'+(d.topCons||[]).map(function(r){return '<tr><td>'+esc(r.producto)+'</td><td>'+esc(r.codigo)+'</td><td>'+fmt(r.cantidad)+'</td></tr>';}).join('')+'</table><!-- CHANGELOG V1.1.15: Producción estable. Se actualiza identificación visible de versión estable sin modificar Firebase, datos, iframes ni lógica interna. Base recomendada para producción y futuras mejoras. -->
-</body></html>'; return html;}
+  function excelHtml(d){d=d||window.__EXEC_DATA_V114||{}; var k=d.kpis||{}; var rows=[['Modulo',d.modulo||''],['Mes',d.mes||''],['Items inventario',k.total||0],['Stock critico',k.stockCrit||0],['Sin stock',k.sinStock||0],['Vencidos',k.vencidos||0],['Por vencer 30 dias',k.v30||0],['Por vencer 90 dias',k.v90||0],['Entradas mes',k.entradas||0],['Salidas mes',k.salidas||0],['Sugerencias compra',k.compras||0]]; var html='<html><head><meta charset="UTF-8"></head><body><h2>Dashboard Gerencial Inventario PSI</h2><table border="1">'+rows.map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>';}).join('')+'</table><h3>Sugerencias de compra</h3><table border="1"><tr><th>Prioridad</th><th>Producto</th><th>Código</th><th>Stock</th><th>Mínimo</th><th>Consumo</th><th>Sugerida</th><th>Vencimiento</th><th>Motivo</th></tr>'+(d.compras||[]).map(function(r){return '<tr><td>'+esc(r.prioridad)+'</td><td>'+esc(r.producto)+'</td><td>'+esc(r.codigo)+'</td><td>'+fmt(r.stock)+'</td><td>'+fmt(r.minimo)+'</td><td>'+fmt(r.consumo)+'</td><td>'+fmt(r.sugerida)+'</td><td>'+esc(r.vencimiento)+'</td><td>'+esc(r.motivo)+'</td></tr>';}).join('')+'</table><h3>Mayor consumo</h3><table border="1"><tr><th>Producto</th><th>Código</th><th>Consumo</th></tr>'+(d.topCons||[]).map(function(r){return '<tr><td>'+esc(r.producto)+'</td><td>'+esc(r.codigo)+'</td><td>'+fmt(r.cantidad)+'</td></tr>';}).join('')+'</table></body></html>'; return html;}
   window.openExecutiveDashboardERP=function(){var ov=$('exec-overlay'); if(ov){ov.style.display='flex'; ov.classList.add('open');} if($('exec-month')&&!$('exec-month').value) $('exec-month').value=monthNow(); analyze();};
   window.closeExecutiveDashboardERP=function(){var ov=$('exec-overlay'); if(ov){ov.classList.remove('open'); ov.style.display='none';}};
   window.refreshExecutiveDashboardERP=analyze;
@@ -6322,39 +6811,741 @@ updateBackupStatus();
 })();
 </script>
 <!-- CHANGELOG V1.1.15: Producción estable. Se actualiza identificación visible de versión estable sin modificar Firebase, datos, iframes ni lógica interna. Base recomendada para producción y futuras mejoras. -->
+
+
+<script>
+/* ENTERPRISE V2.0.2 - Limpieza y estabilización del shell principal. No modifica Firebase ni los módulos internos. */
+(function(){
+  window.closeAllMenusV2=function(){ try{ document.querySelectorAll('.erp-menu[open]').forEach(function(d){ d.removeAttribute('open'); }); }catch(e){} };
+  document.addEventListener('click', function(ev){ try{ var inside=ev.target.closest && ev.target.closest('.erp-menu'); if(!inside) window.closeAllMenusV2(); }catch(e){} });
+  window.showApp=function(key){
+    var framesBox=document.getElementById('frames');
+    window.__KARDEX_ACTIVE_APP__=key;
+    try{ localStorage.setItem('kardex_active_app', key); }catch(e){}
+    try{ if(typeof auditERP==='function') auditERP('Cambio de módulo', key); }catch(e){}
+    try{ document.querySelectorAll('.seltab').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-app')===key); }); }catch(e){}
+    try{ document.querySelectorAll('.appframe').forEach(function(f){
+      var active=f.getAttribute('data-app')===key;
+      f.classList.toggle('active', active);
+      f.style.display='block'; f.style.visibility=active?'visible':'hidden'; f.style.opacity=active?'1':'0'; f.style.pointerEvents=active?'auto':'none'; f.style.transform=active?'translateX(0)':'translateX(8px)';
+    }); }catch(e){}
+    if(framesBox){ framesBox.classList.add('erp-switching'); setTimeout(function(){framesBox.classList.remove('erp-switching');}, 250); }
+    try{ if(typeof updateBackupStatus==='function') updateBackupStatus(); }catch(e){}
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    var saved='reactivos'; try{ saved=localStorage.getItem('kardex_active_app') || 'reactivos'; }catch(e){}
+    if(!document.getElementById('frame-'+saved)) saved='reactivos';
+    setTimeout(function(){ window.showApp(saved); }, 80);
+  });
+})();
+</script>
+
+<!-- CHANGELOG ENTERPRISE V2.0.2: Limpieza de arquitectura del shell principal. Se reorganiza el encabezado en menús responsivos, se corrigen cadenas de exportación con HTML interno para evitar que JavaScript se renderice como texto y se mantiene intacta la lógica de Reactivos, Líquidos, Sólidos y Firebase. -->
+
+
+<script>
+/* ENTERPRISE V2.0.4 - Editor de trazabilidad por lote/envase.
+   El botón Editar general se mantiene para la ficha maestra; este parche añade ✏️ Lote en cada lote. */
+(function(){
+  function patchFrame(frame){
+    try{
+      var w=frame.contentWindow, d=frame.contentDocument;
+      if(!w || !d || w.__LOTE_EDITOR_V203__) return;
+      w.__LOTE_EDITOR_V203__=true;
+      var app=frame.getAttribute('data-app')||'reactivos';
+      var movCol= app==='liquidos' ? 'liq_movimientos' : (app==='solidos' ? 'sol_movimientos' : 'movimientos');
+      var style=d.createElement('style');
+      style.textContent='.btn-lote-edit-v203{margin-left:auto;border:1px solid rgba(167,139,250,.35);background:rgba(167,139,250,.12);color:#a78bfa;border-radius:9px;padding:7px 10px;font-size:11px;font-weight:900;cursor:pointer;white-space:nowrap}.btn-lote-edit-v203:hover{border-color:#a78bfa}.lote-editor-note-v203{font-size:11px;color:#6b8fa8;line-height:1.35;margin:0 0 10px}.lote-editor-grid-v203{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lote-editor-grid-v203 .full{grid-column:1/-1}@media(max-width:650px){.lote-editor-grid-v203{grid-template-columns:1fr}.lote-editor-grid-v203 .full{grid-column:auto}}';
+      d.head.appendChild(style);
+      function toast(msg,color){ try{ w.toast ? w.toast(msg,color) : alert(msg); }catch(e){ alert(msg); } }
+      function ensureModal(){
+        var old=d.getElementById('ov-lote-v203'); if(old) return old;
+        var ov=d.createElement('div'); ov.className='overlay'; ov.id='ov-lote-v203';
+        ov.innerHTML='<div class="modal"><div class="mhdr"><button class="btn-close" id="le-close-v203">←</button><h2 id="le-title-v203">Editar lote</h2></div><div class="mbody"><div class="fsep">📦 Trazabilidad específica del lote / envase</div><p class="lote-editor-note-v203">Estos datos pertenecen al lote seleccionado, no a la ficha general del reactivo. Sirve cuando cada frasco tiene presentación, tara o caducidad diferente.</p><input type="hidden" id="le-cod-v203"><input type="hidden" id="le-lote-original-v203"><div class="lote-editor-grid-v203"><div class="fg"><label class="flbl">Lote *</label><input type="text" id="le-lote-v203"></div><div class="fg"><label class="flbl">Caducidad del lote</label><input type="date" id="le-cad-v203"></div><div class="fg"><label class="flbl">Presentación / capacidad</label><input type="number" id="le-pres-v203" step="0.01"></div><div class="fg"><label class="flbl">N° frascos/envases</label><input type="number" id="le-env-v203" min="0" step="1"></div><div class="fg"><label class="flbl">Tara 1 envase (g)</label><input type="number" id="le-tara-v203" min="0" step="0.01"></div><div class="fg"><label class="flbl">Densidad lote (g/mL, líquidos)</label><input type="number" id="le-dens-v203" min="0" step="0.001"></div><div class="fg"><label class="flbl">Marca / proveedor lote</label><input type="text" id="le-marca-v203"></div><div class="fg full"><label class="flbl">Observación del lote</label><textarea id="le-obs-v203" rows="3"></textarea></div></div></div><div class="mfoot"><button class="btn-primary" id="le-save-v203">✅ Guardar lote</button><button class="btn-ghost" id="le-cancel-v203">Cancelar</button></div></div>';
+        d.body.appendChild(ov);
+        d.getElementById('le-close-v203').onclick=d.getElementById('le-cancel-v203').onclick=function(){ ov.classList.remove('open'); };
+        d.getElementById('le-save-v203').onclick=saveLote;
+        return ov;
+      }
+      function getLote(cod,lote){
+        var arr=(w.LOTES&&w.LOTES[cod])||[];
+        return arr.find(function(x){return String(x.lote)===String(lote);})||null;
+      }
+      function openLoteEditor(cod,lote){
+        ensureModal();
+        var item=(w.INV||[]).find(function(x){return String(x.codigo)===String(cod);})||{};
+        var l=getLote(cod,lote)||{};
+        d.getElementById('le-title-v203').textContent='Editar lote: '+(lote||'');
+        d.getElementById('le-cod-v203').value=cod||'';
+        d.getElementById('le-lote-original-v203').value=lote||'';
+        d.getElementById('le-lote-v203').value=l.lote||lote||'';
+        d.getElementById('le-cad-v203').value=l.caducidad||l.fecha_caducidad||item.caducidad||'';
+        d.getElementById('le-pres-v203').value=(l.presentacion!==undefined?l.presentacion:(l.cant_inicial!==undefined?l.cant_inicial:(item.presentacion||'')));
+        d.getElementById('le-env-v203').value=l.envases||l.frascos||l.num_envases||'';
+        d.getElementById('le-tara-v203').value=l.tara_envase_g||l.tara||l.tara_g||'';
+        var densInp=d.getElementById('le-dens-v203'); if(densInp) densInp.value=l.densidad||item.densidad||'';
+        d.getElementById('le-marca-v203').value=l.marca||item.marca||'';
+        d.getElementById('le-obs-v203').value=l.obs_lote||l.obs||'';
+        d.getElementById('ov-lote-v203').classList.add('open');
+      }
+      async function saveLote(){
+        var cod=d.getElementById('le-cod-v203').value.trim();
+        var oldLote=d.getElementById('le-lote-original-v203').value.trim();
+        var newLote=d.getElementById('le-lote-v203').value.trim();
+        if(!cod||!oldLote||!newLote){toast('⛔ Código y lote son obligatorios','var(--danger)');return;}
+        var meta={
+          lote:newLote,
+          caducidad:d.getElementById('le-cad-v203').value||'',
+          fecha_caducidad:d.getElementById('le-cad-v203').value||'',
+          presentacion:Number(d.getElementById('le-pres-v203').value)||0,
+          envases:Number(d.getElementById('le-env-v203').value)||0,
+          frascos:Number(d.getElementById('le-env-v203').value)||0,
+          tara_envase_g:Number(d.getElementById('le-tara-v203').value)||0,
+          tara_g:Number(d.getElementById('le-tara-v203').value)||0,
+          densidad:(d.getElementById('le-dens-v203')&&d.getElementById('le-dens-v203').value)?Number(d.getElementById('le-dens-v203').value):undefined,
+          marca:d.getElementById('le-marca-v203').value.trim(),
+          obs_lote:d.getElementById('le-obs-v203').value.trim(),
+          loteEditadoAt:new Date().toISOString()
+        };
+        var arr=(w.LOTES&&w.LOTES[cod])||[];
+        arr.forEach(function(l){ if(String(l.lote)===String(oldLote)){ Object.assign(l,meta); } });
+        (w.MOVS||[]).forEach(function(m){ if(String(m.codigo)===cod && String(m.lote)===oldLote){ Object.assign(m,meta,{lote:newLote,clave:cod+'|'+newLote}); } });
+        try{
+          if(w.db){
+            var snap=await w.db.collection(movCol).where('codigo','==',cod).where('lote','==',oldLote).get();
+            var batch=w.db.batch(), n=0;
+            snap.forEach(function(doc){ batch.set(doc.ref, Object.assign({},meta,{clave:cod+'|'+newLote}), {merge:true}); n++; });
+            if(n>0) await batch.commit();
+          }
+        }catch(e){ console.warn('No se pudo actualizar Firebase del lote',e); toast('⚠️ Guardado visual/local. Revisa conexión Firebase.','var(--warn)'); }
+        try{ if(typeof w.renderInv==='function') w.renderInv(); if(typeof w.renderLoteSelector==='function'){ var sel=d.getElementById('m-reactivo'); if(sel&&sel.value===cod) w.renderLoteSelector(cod); } }catch(e){}
+        d.getElementById('ov-lote-v203').classList.remove('open');
+        toast('✅ Lote actualizado: '+newLote,'var(--green)');
+      }
+      function addButtons(){
+        try{
+          d.querySelectorAll('.lote-row').forEach(function(row){
+            if(row.querySelector('.btn-lote-edit-v203')) return;
+            var card=row.closest('.card'); if(!card || !card.id || !card.id.startsWith('ic-')) return;
+            var idx=Number(card.id.replace('ic-',''));
+            var item=(w.INV||[])[idx]; if(!item) return;
+            var loteText=(row.querySelector('.lote-num')||{}).textContent||'';
+            var lote=(loteText.replace('Lote:','').replace('(agotado)','').trim().split(/\s+/)[0]||'').trim();
+            if(!lote) return;
+            var btn=d.createElement('button'); btn.type='button'; btn.className='btn-lote-edit-v203'; btn.textContent='✏️ Lote';
+            btn.onclick=function(ev){ ev.stopPropagation(); openLoteEditor(item.codigo,lote); };
+            row.appendChild(btn);
+          });
+        }catch(e){ console.warn(e); }
+      }
+      var old=w.renderInv;
+      if(typeof old==='function'){
+        w.renderInv=function(){ var r=old.apply(this,arguments); setTimeout(addButtons,80); return r; };
+      }
+      setInterval(addButtons,1500);
+      setTimeout(addButtons,1200);
+    }catch(e){ console.warn('Lote editor patch error',e); }
+  }
+  function patchAll(){ document.querySelectorAll('.appframe').forEach(patchFrame); }
+  window.addEventListener('DOMContentLoaded',function(){ setTimeout(patchAll,1000); setTimeout(patchAll,3500); });
+  setInterval(patchAll,4000);
+})();
+</script>
+
+<!-- CHANGELOG ENTERPRISE V2.0.4: Se agrega editor específico por lote/envase para Reactivos, Líquidos y Sólidos. El botón Editar general queda solo para ficha maestra; cada lote ahora permite editar caducidad, presentación, N° envases, tara y observación para trazabilidad. -->
+
+
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+(function(){
+  const COLLECTION='compras_pendientes_inventario';
+
+const PSI_BRIDGE_FIREBASE_CONFIG={
+  apiKey:"AIzaSyBR_MV4cQZakUPLTQrV6TWqMRX5mNHpf2k",
+  authDomain:"psi-inventarios2026.firebaseapp.com",
+  projectId:"psi-inventarios2026",
+  storageBucket:"psi-inventarios2026.firebasestorage.app",
+  messagingSenderId:"238951165415",
+  appId:"1:238951165415:web:689238fd00e258b607a142"
+};
+
+  let bridgeDb=null;
+  let firebaseInboxItems=[];
+  let unsubscribeBridge=null;
+
+  function initBridgeDb(){
+    if(bridgeDb)return bridgeDb;
+    let app;
+    try{app=firebase.app('kardexBridge');}
+    catch(_){app=firebase.initializeApp(PSI_BRIDGE_FIREBASE_CONFIG,'kardexBridge');}
+    bridgeDb=firebase.firestore(app);
+    return bridgeDb;
+  }
+
+  function escInbox(v){
+    return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function destinationLabel(key){
+    return {reactivos:'🧪 Reactivos contables',liquidos:'💧 Líquidos',solidos:'⚗️ Sólidos',estandares_mrc:'🎯 Estándares y MRC'}[key]||key||'Sin destino';
+  }
+  function stateClass(state){
+    if(state==='Ingresado')return 'ok';
+    if(state==='Cuarentena')return 'warn';
+    if(state==='Rechazado'||state==='Anulado')return 'bad';
+    return 'none';
+  }
+
+  window.openComprasBridgeInbox=function(){
+    document.getElementById('compras-inbox-overlay')?.classList.add('open');
+    startBridgeListener();
+  };
+  window.closeComprasBridgeInbox=function(){
+    document.getElementById('compras-inbox-overlay')?.classList.remove('open');
+  };
+  window.refreshComprasBridgeInbox=function(){startBridgeListener(true);};
+  window.renderFirebaseInbox=function(){
+    const el=document.getElementById('compras-inbox-content');if(!el)return;
+    const filter=document.getElementById('compras-inbox-filter')?.value||'';
+    const items=firebaseInboxItems.filter(x=>filter==='__PENDIENTES__'?!['Ingresado','Rechazado','Anulado'].includes(x.estadoInventario):(!filter||x.estadoInventario===filter));
+    if(!items.length){el.innerHTML='<div style="color:#6b8fa8">No existen ingresos para el filtro seleccionado.</div>';return;}
+    const groups={reactivos:[],liquidos:[],solidos:[],estandares_mrc:[]};
+    items.forEach(item=>{const key=item.destinoKardex||'reactivos';(groups[key]||(groups[key]=[])).push(item);});
+    el.innerHTML=Object.entries(groups).filter(([,arr])=>arr.length).map(([key,arr])=>`
+      <div style="margin-top:14px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+          <b style="color:#00c2a0">${destinationLabel(key)}</b>
+          <span style="color:#6b8fa8;font-size:11px">${arr.length} ingreso(s)</span>
+          <button class="compras-inbox-btn primary" style="margin-left:auto" onclick="openKardexModuleFromInbox('${key}')">Abrir módulo vacío</button>
+        </div>
+        ${arr.map(item=>`<div class="compras-inbox-card">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <b style="flex:1;min-width:220px">${escInbox(item.productoNombre||item.productoCodigo||'Producto')}</b>
+            <span class="expiry-pill ${stateClass(item.estadoInventario)}">${escInbox(item.estadoInventario||'Pendiente')}</span>
+          </div>
+          <div class="compras-inbox-grid">
+            <div class="compras-inbox-cell"><small>OC</small><b>${escInbox(item.oc||'—')}</b></div>
+            <div class="compras-inbox-cell"><small>Cantidad</small><b>${escInbox(item.cantidad||0)} ${escInbox(item.unidad||'')}</b></div>
+            <div class="compras-inbox-cell"><small>Lote</small><b>${escInbox(item.loteProveedor||item.loteInterno||'—')}</b></div>
+            <div class="compras-inbox-cell"><small>Caducidad</small><b>${escInbox(item.caducidad||'—')}</b></div>
+            <div class="compras-inbox-cell"><small>Proveedor</small><b>${escInbox(item.proveedor||'—')}</b></div>
+            <div class="compras-inbox-cell"><small>Marca</small><b>${escInbox(item.marca||'—')}</b></div>
+            <div class="compras-inbox-cell"><small>Presentación</small><b>${escInbox(item.presentacion||'—')}</b></div>
+            <div class="compras-inbox-cell"><small>Ubicación</small><b>${escInbox(item.ubicacion||'—')}</b></div>
+          </div>
+          <div class="compras-code-row">
+            <div>
+              <label>Código existente en KARDEX (opcional)</label>
+              <input id="bridge-code-${escInbox(item.id)}" value="${escInbox(item.codigoKardex||'')}" placeholder="Ej.: MAN-REA-01" oninput="updateBridgeCodeLocal('${escInbox(item.id)}',this.value)" onblur="saveBridgeKardexCode('${escInbox(item.id)}',this.value)">
+              <div class="compras-code-help">Prioridad 1. Si está vacío o no coincide, el motor continúa por código de Compras, catálogo y nombre + marca.</div>
+            </div>
+            <button class="compras-inbox-btn" onclick="saveBridgeKardexCode('${escInbox(item.id)}',document.getElementById('bridge-code-${escInbox(item.id)}')?.value||'')">💾 Guardar código</button>
+          </div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px">
+            <button class="compras-inbox-btn" onclick="setBridgeState('${escInbox(item.id)}','En revisión')">👁 En revisión</button>
+            <button class="compras-inbox-btn" onclick="setBridgeState('${escInbox(item.id)}','Cuarentena')">🟠 Cuarentena</button>
+            <button class="compras-inbox-btn" onclick="setBridgeState('${escInbox(item.id)}','Rechazado')">❌ Rechazar</button>
+            <button class="compras-inbox-btn primary" onclick="smartIntakeBridgeItem('${escInbox(item.id)}')">🧠 Procesar ingreso</button>
+            <button class="compras-inbox-btn primary" onclick="confirmBridgeEntered('${escInbox(item.id)}')">✅ Marcar ingresado</button>
+          </div>
+        </div>`).join('')}
+      </div>`).join('');
+  };
+
+  window.openKardexModuleFromInbox=function(moduleKey){
+    if(moduleKey==='estandares_mrc'){alert('El módulo Estándares y MRC todavía está pendiente de desarrollo.');return;}
+    closeComprasBridgeInbox();
+    if(typeof showApp==='function')showApp(moduleKey);
+  };
+
+
+  function setFrameValue(doc,id,value){
+    const el=doc.getElementById(id);
+    if(!el || value===undefined || value===null)return;
+    el.value=String(value);
+    el.dispatchEvent(new Event('input',{bubbles:true}));
+    el.dispatchEvent(new Event('change',{bubbles:true}));
+  }
+
+  function bridgeObs(item){
+    return [
+      'Ingreso pendiente desde ERP Compras',
+      item.oc ? 'OC: '+item.oc : '',
+      item.proveedor ? 'Proveedor: '+item.proveedor : '',
+      item.marca ? 'Marca: '+item.marca : '',
+      item.presentacion ? 'Presentación: '+item.presentacion : '',
+      item.catalogo ? 'Catálogo: '+item.catalogo : '',
+      item.codigoKardex ? 'Código KARDEX indicado: '+item.codigoKardex : '',
+      item.loteProveedor ? 'Lote proveedor: '+item.loteProveedor : '',
+      item.loteInterno ? 'Lote interno PSI: '+item.loteInterno : '',
+      item.coa ? 'COA: '+item.coa : '',
+      item.sds ? 'SDS: '+item.sds : '',
+      item.observaciones || ''
+    ].filter(Boolean).join(' | ');
+  }
+
+  function waitForFrameReady(frame,callback,tries=0){
+    try{
+      const doc=frame?.contentDocument;
+      if(doc && doc.getElementById('fab-inv')){
+        callback(doc,frame.contentWindow);
+        return;
+      }
+    }catch(_){}
+    if(tries>40){
+      alert('El módulo tardó demasiado en cargar. Intente nuevamente.');
+      return;
+    }
+    setTimeout(()=>waitForFrameReady(frame,callback,tries+1),150);
+  }
+
+  function openNewProductModal(doc){
+    const fab=doc.getElementById('fab-inv');
+    if(fab)fab.click();
+    else{
+      const overlay=doc.getElementById('ov-reactivo');
+      if(overlay)overlay.classList.add('open');
+    }
+  }
+
+  function prefillReactivos(doc,item){
+    openNewProductModal(doc);
+    setTimeout(()=>{
+      setFrameValue(doc,'r-codigo',item.codigoKardex||item.productoCodigo||item.loteInterno||'');
+      setFrameValue(doc,'r-reactivo',item.productoNombre||'');
+      setFrameValue(doc,'r-base',item.clasificacion||'');
+      setFrameValue(doc,'r-unidad',item.unidad||'unidad');
+      setFrameValue(doc,'r-marca',item.marca||'');
+      setFrameValue(doc,'r-proveedor',item.proveedor||'');
+      setFrameValue(doc,'r-presentacion',item.cantidad||'');
+      setFrameValue(doc,'r-stock-min',item.stockMin||'');
+      setFrameValue(doc,'r-caducidad',item.caducidad||'');
+      setFrameValue(doc,'r-responsable',item.responsable||'');
+      setFrameValue(doc,'r-obs-r',bridgeObs(item));
+      const title=doc.getElementById('r-title');
+      if(title)title.textContent='Nuevo Reactivo';
+    },120);
+  }
+
+  function prefillLiquidos(doc,item){
+    openNewProductModal(doc);
+    setTimeout(()=>{
+      setFrameValue(doc,'r-codigo',item.codigoKardex||item.productoCodigo||item.loteInterno||'');
+      setFrameValue(doc,'r-reactivo',item.productoNombre||'');
+      setFrameValue(doc,'r-base',item.clasificacion||'Líquido');
+      setFrameValue(doc,'r-clasif',item.clasificacion||'Reactivo líquido');
+      setFrameValue(doc,'r-ubicacion',item.ubicacion||'');
+      setFrameValue(doc,'r-stock-min',item.stockMin||'');
+      setFrameValue(doc,'r-caducidad',item.caducidad||'');
+      setFrameValue(doc,'r-responsable',item.responsable||'');
+      setFrameValue(doc,'r-obs-r',bridgeObs(item));
+      const title=doc.getElementById('r-title');
+      if(title)title.textContent='Nuevo Reactivo';
+    },120);
+  }
+
+  function prefillSolidos(doc,item){
+    openNewProductModal(doc);
+    setTimeout(()=>{
+      setFrameValue(doc,'r-codigo',item.codigoKardex||item.productoCodigo||item.loteInterno||'');
+      setFrameValue(doc,'r-reactivo',item.productoNombre||'');
+      setFrameValue(doc,'r-base',item.clasificacion||'Sólido');
+      setFrameValue(doc,'r-clasif',item.clasificacion||'Reactivo sólido');
+      setFrameValue(doc,'r-ubicacion',item.ubicacion||'');
+      setFrameValue(doc,'r-stock-min',item.stockMin||'');
+      setFrameValue(doc,'r-caducidad',item.caducidad||'');
+      setFrameValue(doc,'r-responsable',item.responsable||'');
+      setFrameValue(doc,'r-obs-r',bridgeObs(item));
+      const title=doc.getElementById('r-title');
+      if(title)title.textContent='Nuevo Reactivo';
+    },120);
+  }
+
+
+  function normalizeSmart(value){
+    return String(value||'').trim().toUpperCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/\s+/g,' ');
+  }
+
+  function readFrameInventory(frameWindow){
+    try{
+      const result=frameWindow.eval('INV');
+      return Array.isArray(result)?result:[];
+    }catch(err){
+      console.warn('No se pudo leer INV del módulo',err);
+      return [];
+    }
+  }
+
+
+  function normalizeCodeExact(value){
+    return String(value||'').trim().toUpperCase().replace(/[^A-Z0-9]/g,'');
+  }
+
+  function findExistingByMovementSelect(doc,code){
+    const wanted=normalizeCodeExact(code);
+    if(!wanted)return null;
+    const select=doc.getElementById('m-reactivo');
+    if(!select)return null;
+
+    const option=[...select.options].find(opt=>
+      normalizeCodeExact(opt.value)===wanted ||
+      normalizeCodeExact((opt.textContent||'').split('·')[0])===wanted
+    );
+    if(!option)return null;
+
+    const text=String(option.textContent||'').trim();
+    const parts=text.split('·').map(x=>x.trim());
+    return {
+      codigo: option.value || code,
+      reactivo: parts[1] || parts[0] || '',
+      nombre: parts[1] || parts[0] || '',
+      stock: 0,
+      unidad: ''
+    };
+  }
+
+  function waitForExistingCode(doc,code,callback,tries=0){
+    const found=findExistingByMovementSelect(doc,code);
+    if(found){callback(found);return;}
+    if(tries>=30){callback(null);return;}
+    setTimeout(()=>waitForExistingCode(doc,code,callback,tries+1),250);
+  }
+
+  function findExistingSmart(frameWindow,item){
+    const inventory=readFrameInventory(frameWindow);
+
+    const manualCode=normalizeSmart(item.codigoKardex);
+    if(manualCode){
+      const manualFound=inventory.find(product=>normalizeSmart(product.codigo)===manualCode);
+      if(manualFound)return {product:manualFound,matchType:'Código KARDEX indicado'};
+    }
+
+    const productCode=normalizeSmart(item.productoCodigo);
+    if(productCode){
+      const codeFound=inventory.find(product=>normalizeSmart(product.codigo)===productCode);
+      if(codeFound)return {product:codeFound,matchType:'Código del producto en Compras'};
+    }
+
+    const catalog=normalizeSmart(item.catalogo);
+    if(catalog){
+      const catalogFound=inventory.find(product=>
+        normalizeSmart(product.catalogo||product.numeroCatalogo||product.nCatalogo)===catalog
+      );
+      if(catalogFound)return {product:catalogFound,matchType:'Número de catálogo'};
+    }
+
+    const targetName=normalizeSmart(item.productoNombre);
+    const targetBrand=normalizeSmart(item.marca);
+
+    if(targetName&&targetBrand){
+      const nameBrandFound=inventory.find(product=>{
+        const productName=normalizeSmart(product.reactivo||product.nombre||product.producto);
+        const productBrand=normalizeSmart(product.marca);
+        return productName===targetName&&productBrand===targetBrand;
+      });
+      if(nameBrandFound)return {product:nameBrandFound,matchType:'Nombre exacto + marca'};
+    }
+
+    if(targetName){
+      const nameFound=inventory.find(product=>
+        normalizeSmart(product.reactivo||product.nombre||product.producto)===targetName
+      );
+      if(nameFound)return {product:nameFound,matchType:'Nombre normalizado'};
+    }
+
+    return {product:null,matchType:'Sin coincidencia'};
+  }
+
+  function formatSmartDate(value){
+    if(!value)return '';
+    const raw=String(value);
+    if(/^\d{4}-\d{2}-\d{2}$/.test(raw))return raw;
+    const parts=raw.split('/');
+    if(parts.length===3)return `${parts[2]}-${parts[1].padStart(2,'0')}-${parts[0].padStart(2,'0')}`;
+    return '';
+  }
+
+
+  function installBridgeSaveHook(frameWindow,bridgeId,item,moduleKey){
+    try{
+      if(!frameWindow.db || frameWindow.__PSI_BRIDGE_HOOK__===bridgeId)return;
+      frameWindow.__PSI_BRIDGE_HOOK__=bridgeId;
+
+      const originalCollection=frameWindow.db.collection.bind(frameWindow.db);
+      frameWindow.db.collection=function(name){
+        const ref=originalCollection(name);
+        if(name!=='movimientos')return ref;
+
+        const originalAdd=ref.add.bind(ref);
+        ref.add=async function(data){
+          const result=await originalAdd(data);
+
+          try{
+            await window.parent.completeBridgeInventoryEntry(
+              bridgeId,
+              item.codigoKardex||data.codigo||'',
+              item.destinoKardex||moduleKey||'reactivos'
+            );
+          }catch(err){
+            console.error('No se pudo cerrar la bandeja automáticamente:',err);
+          }
+          return result;
+        };
+        return ref;
+      };
+    }catch(err){
+      console.error('No se pudo instalar el cierre automático:',err);
+    }
+  }
+
+  function prepareExistingMovement(doc,frameWindow,item,existing){
+    try{
+      frameWindow.eval("showPanel('nuevo')");
+    }catch(_){
+      doc.getElementById('tab-nuevo')?.click();
+    }
+
+    setTimeout(()=>{
+      const select=doc.getElementById('m-reactivo');
+      if(select){
+        select.value=existing.codigo;
+        select.dispatchEvent(new Event('change',{bubbles:true}));
+      }
+
+      const applyMovementData=()=>{
+        setFrameValue(doc,'m-lote-manual',item.loteProveedor||item.loteInterno||'');
+        setFrameValue(doc,'m-fecha',formatSmartDate(item.fechaIngreso)||new Date().toISOString().slice(0,10));
+        setFrameValue(doc,'m-tipo','Entrada');
+        setFrameValue(doc,'m-cantidad',Number(item.cantidad||0)>0?Number(item.cantidad):1);
+        setFrameValue(doc,'m-resp',item.responsable||'');
+        setFrameValue(doc,'m-doc',item.oc||'');
+        setFrameValue(doc,'m-area',item.ubicacion||'');
+        setFrameValue(doc,'m-caducidad-lote',formatSmartDate(item.caducidad));
+        setFrameValue(doc,'m-obs',bridgeObs(item));
+      };
+      applyMovementData();
+      setTimeout(applyMovementData,250);
+      setTimeout(applyMovementData,600);
+
+      const movementSection=doc.getElementById('mov-section');
+      const lotSection=doc.getElementById('lote-section');
+      if(lotSection)lotSection.style.display='';
+      if(movementSection)movementSection.style.display='';
+
+      try{frameWindow.eval('updatePreview()');}catch(_){}
+      installBridgeSaveHook(frameWindow,item.id,item,item.destinoKardex||'reactivos');
+
+      alert(
+        '✅ Producto existente encontrado\n\n'+
+        'Código: '+(existing.codigo||'')+'\n'+
+        'Producto: '+(existing.reactivo||existing.nombre||'')+'\n'+
+        'Stock actual: '+(existing.stock??0)+' '+(existing.unidad||'')+'\n\n'+
+        'Se preparó una nueva ENTRADA con el lote recibido. Revise y pulse “Entrada”.'
+      );
+    },180);
+  }
+
+  function prepareNewMaster(doc,item,moduleKey){
+    if(moduleKey==='liquidos')prefillLiquidos(doc,item);
+    else if(moduleKey==='solidos')prefillSolidos(doc,item);
+    else prefillReactivos(doc,item);
+
+    setTimeout(()=>{
+      const code=doc.getElementById('r-codigo');
+      if(code){
+        code.focus();
+        code.select();
+      }
+      alert(
+        '⚠️ Producto no encontrado en el inventario.\n\n'+
+        'Se abrió la ficha normal de “Nuevo Reactivo” con los datos disponibles.\n'+
+        'Revise o asigne el código interno, complete la ficha y guarde. Luego registre el primer lote como Entrada.'
+      );
+    },220);
+  }
+
+
+  window.updateBridgeCodeLocal=function(id,value){
+    const item=firebaseInboxItems.find(x=>String(x.id)===String(id));
+    if(item)item.codigoKardex=String(value||'').trim().toUpperCase();
+  };
+
+  window.saveBridgeKardexCode=async function(id,value){
+    const code=String(value||'').trim().toUpperCase();
+    const item=firebaseInboxItems.find(x=>String(x.id)===String(id));
+    if(item)item.codigoKardex=code;
+    try{
+      const db=initBridgeDb();
+      await db.collection(COLLECTION).doc(id).set({
+        codigoKardex:code,
+        destinoKardex:item?.destinoKardex||'reactivos',
+        actualizadoEn:new Date().toISOString()
+      },{merge:true});
+    }catch(err){
+      console.error(err);
+      alert('No se pudo guardar el código KARDEX: '+(err.message||err));
+    }
+  };
+
+  window.smartIntakeBridgeItem=async function(id){
+    const item=firebaseInboxItems.find(x=>String(x.id)===String(id));
+    if(!item){alert('No se encontró el ingreso seleccionado.');return;}
+
+    const codeInput=document.getElementById('bridge-code-'+id);
+    if(codeInput){
+      item.codigoKardex=String(codeInput.value||'').trim().toUpperCase();
+      try{await saveBridgeKardexCode(id,item.codigoKardex);}catch(_){}
+    }
+
+    const moduleKey=item.destinoKardex||'reactivos';
+    if(moduleKey==='estandares_mrc'){
+      alert('El módulo Estándares y MRC todavía está pendiente de desarrollo.');
+      return;
+    }
+
+    try{
+      const db=initBridgeDb();
+      await db.collection(COLLECTION).doc(String(id)).set({
+        estadoInventario:'En revisión',
+        codigoKardex:item.codigoKardex||'',
+        destinoKardex:moduleKey,
+        actualizadoEn:new Date().toISOString()
+      },{merge:true});
+    }catch(_){}
+    closeComprasBridgeInbox();
+    if(typeof showApp==='function')showApp(moduleKey);
+
+    const frame=document.getElementById('frame-'+moduleKey);
+    waitForFrameReady(frame,(doc,frameWindow)=>{
+      const processResolved=(existing,matchType)=>{
+        if(existing){
+          const proceed=confirm(
+            '✅ Producto existente encontrado.\n\n'+
+            'Coincidencia: '+matchType+'\n'+
+            'Código: '+(existing.codigo||'')+'\n'+
+            'Producto: '+(existing.reactivo||existing.nombre||'')+'\n\n'+
+            'Aceptar: abrir directamente la ENTRADA para registrar cantidad y lote.\n'+
+            'Cancelar: volver a la bandeja.'
+          );
+          if(proceed)prepareExistingMovement(doc,frameWindow,item,existing);
+          else setTimeout(()=>openComprasBridgeInbox(),80);
+          return;
+        }
+
+        const match=findExistingSmart(frameWindow,item);
+        if(match.product){
+          processResolved(match.product,match.matchType);
+          return;
+        }
+
+        if(item.codigoKardex){
+          const createNew=confirm(
+            '⚠️ El código no aparece en el catálogo del módulo:\n\n'+
+            item.codigoKardex+'\n\n'+
+            'Aceptar: crear una ficha nueva con ese código.\n'+
+            'Cancelar: volver a la bandeja.'
+          );
+          if(createNew)prepareNewMaster(doc,item,moduleKey);
+          else setTimeout(()=>openComprasBridgeInbox(),80);
+        }else{
+          prepareNewMaster(doc,item,moduleKey);
+        }
+      };
+
+      if(item.codigoKardex){
+        waitForExistingCode(doc,item.codigoKardex,(found)=>{
+          processResolved(found,found?'Código KARDEX existente':'Sin coincidencia por código');
+        });
+      }else{
+        processResolved(null,'Búsqueda inteligente');
+      }
+    });
+  };
+
+  window.openAndPrefillBridgeItem=async function(id){
+    const item=firebaseInboxItems.find(x=>String(x.id)===String(id));
+    if(!item){alert('No se encontró el ingreso seleccionado.');return;}
+
+    const moduleKey=item.destinoKardex||'reactivos';
+    if(moduleKey==='estandares_mrc'){
+      alert('El módulo Estándares y MRC todavía está pendiente de desarrollo.');
+      return;
+    }
+
+    try{await setBridgeState(id,'En revisión');}catch(_){}
+    closeComprasBridgeInbox();
+    if(typeof showApp==='function')showApp(moduleKey);
+
+    const frame=document.getElementById('frame-'+moduleKey);
+    waitForFrameReady(frame,(doc)=>{
+      if(moduleKey==='liquidos')prefillLiquidos(doc,item);
+      else if(moduleKey==='solidos')prefillSolidos(doc,item);
+      else prefillReactivos(doc,item);
+    });
+  };
+
+
+  window.completeBridgeInventoryEntry=async function(id,codigoKardex,destinoKardex){
+    const db=initBridgeDb();
+    const code=String(codigoKardex||'').trim().toUpperCase();
+    const destination=String(destinoKardex||'reactivos').trim();
+
+    await db.collection(COLLECTION).doc(String(id)).set({
+      estadoInventario:'Ingresado',
+      codigoKardex:code,
+      destinoKardex:destination,
+      fechaIngresoKardex:new Date().toISOString(),
+      actualizadoEn:new Date().toISOString()
+    },{merge:true});
+
+    firebaseInboxItems=firebaseInboxItems.filter(x=>String(x.id)!==String(id));
+    renderFirebaseInbox();
+    alert('✅ Entrada guardada correctamente. El registro fue marcado como Ingresado y retirado de Pendientes activos.');
+  };
+
+  window.setBridgeState=async function(id,state){
+    try{
+      const db=initBridgeDb();
+      await db.collection(COLLECTION).doc(id).set({estadoInventario:state,actualizadoEn:new Date().toISOString()},{merge:true});
+    }catch(err){console.error(err);alert('No se pudo actualizar el estado: '+(err.message||err));}
+  };
+
+  window.confirmBridgeEntered=function(id){
+    if(!confirm('Confirme que el producto ya fue registrado manualmente en el inventario final.'))return;
+    setBridgeState(id,'Ingresado');
+  };
+
+  function startBridgeListener(force=false){
+    try{
+      const db=initBridgeDb();
+      if(unsubscribeBridge&&!force)return;
+      if(unsubscribeBridge){unsubscribeBridge();unsubscribeBridge=null;}
+      const el=document.getElementById('compras-inbox-content');
+      if(el)el.innerHTML='<div style="color:#6b8fa8">Sincronizando bandeja...</div>';
+      unsubscribeBridge=db.collection(COLLECTION).orderBy('actualizadoEn','desc').onSnapshot(snap=>{
+        firebaseInboxItems=snap.docs.map(doc=>({id:doc.id,...(doc.data()||{})}));
+        renderFirebaseInbox();
+      },err=>{
+        console.error(err);
+        if(el)el.innerHTML='<div style="color:#ef4444">No se pudo leer la bandeja Firebase: '+escInbox(err.message||err)+'</div>';
+      });
+    }catch(err){
+      console.error(err);
+      const el=document.getElementById('compras-inbox-content');
+      if(el)el.innerHTML='<div style="color:#ef4444">Firebase no disponible: '+escInbox(err.message||err)+'</div>';
+    }
+  }
+
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>startBridgeListener());
+  else startBridgeListener();
+})();
+</script>
 </body>
 </html>
 
-<!-- CHANGELOG V1.0.7: Corrige edición de movimientos en Reactivos. Al cambiar cantidad/tipo se actualizan delta, saldo_lote, saldo_codigo, stock del inventario y se refresca Dashboard/Inventario/Kardex. -->
+<!-- CHANGELOG ENTERPRISE V2.0.4: En entrada de lote se agrega caducidad por lote y, para líquidos, densidad del lote. La información se guarda en el movimiento y se hereda al selector/edición del lote. -->
 
-<!-- CHANGELOG V1.0.7: Corrige edición de movimientos recalculando saldos desde Kardex cronológico y ordena últimos movimientos por fechaISO/fecha. -->
-
-<!-- CHANGELOG V1.0.9: Centro de respaldo visible en la barra superior. Backup y Restaurar actúan sobre el módulo activo: Reactivos, Líquidos o Sólidos. -->
-
-<!-- CHANGELOG V1.0.9: Agrega recordatorio visible de último backup por módulo activo. Cambio seguro: solo panel superior, no toca la carga Firebase ni la lógica interna de Reactivos/Líquidos/Sólidos. -->
-
-<!-- CHANGELOG V1.1.0: Fluidez ERP segura. Solo cambia el panel superior: transiciones suaves entre módulos, conserva el último módulo abierto, evita ocultar iframes con display:none y mantiene Reactivos/Líquidos/Sólidos en memoria sin tocar Firebase interno. -->
-
-<!-- CHANGELOG V1.1.2: Agrega accesos rápidos superiores para exportar Reporte CSV y Reporte por Mes del módulo activo. Cambio seguro: no toca Firebase, no cambia datos y reutiliza los botones internos de Kardex de Reactivos/Líquidos/Sólidos. -->
-
-<!-- CHANGELOG V1.1.2: Normaliza fecha de reportes y Kardex a DD/MM/YYYY, usa fechaISO para filtrar por mes, y ordena exportaciones mensuales del más antiguo al más reciente. -->
-
-<!-- CHANGELOG V1.1.4: Corrige auditoría local segura partiendo de V1.1.2 estable. Mantiene cambio entre Reactivos/Líquidos/Sólidos y evita bloqueo por error de script. -->
-
-<!-- CHANGELOG V1.1.5: Agrega Control de vencimientos seguro desde el panel superior. Lee el módulo activo, clasifica caducidades en vigente/90 días/30 días/vencido/sin fecha, permite filtrar y exportar CSV sin tocar Firebase ni la carga interna. -->
-
-<!-- CHANGELOG V1.1.6: Integra caducidad oficial para Reactivos, Líquidos y Sólidos. El Control de vencimientos lee la colección de inventario del módulo activo (inventario, liq_inventario o sol_inventario), usa el campo caducidad de Editar ficha y mantiene fallback visual sin modificar Firebase. -->
-
-<!-- CHANGELOG V1.1.8: Agrega Estadísticas de consumo ERP desde el panel superior. Lee los movimientos cargados del Kardex del módulo activo, filtra por mes, resume entradas/salidas/neto, identifica mayor consumo y exporta CSV sin modificar Firebase ni la lógica interna de Reactivos/Líquidos/Sólidos. -->
-
-<!-- CHANGELOG V1.1.8: FIX del botón Consumo. Mueve/duplica la lógica al panel padre para que el botón abra el modal; lee MOVS, Firebase o Kardex DOM del módulo activo y mantiene Reactivos/Líquidos/Sólidos sin tocar datos. -->
-
-<!-- CHANGELOG V1.1.9: FIX definitivo del botón Consumo. Define la función al final del HTML padre, abre el modal directamente y analiza movimientos del módulo activo sin tocar Firebase ni datos. -->
-
-<!-- CHANGELOG V1.1.13: Agrega Compras inteligentes y enlace preparado para futuro módulo de compras. Botón 🛒 Compras, sugerencia por stock mínimo/consumo, exportación Excel y JSON de enlace sin modificar Firebase ni datos internos. -->
-
-<!-- CHANGELOG V1.1.13: Compras inteligentes integradas. Corrige stock en compras leyendo Stock actual y Mínimo desde la ficha oficial del inventario de Reactivos/Líquidos/Sólidos; mantiene consumo mensual y JSON de enlace para futuro módulo de compras. -->
-
-<!-- CHANGELOG V1.1.13: Compras con vencimientos integrados. El panel de compras considera stock real, mínimo, consumo mensual y caducidad; agrega caducidad, días para vencer y estado de vencimiento en tabla, Excel y JSON de enlace. -->
-
-<!-- CHANGELOG V1.1.14: Agrega Dashboard Gerencial de Inventario desde el panel padre. Integra KPIs de inventario, stock crítico, vencimientos, consumo mensual y compras sugeridas; exporta Excel sin modificar Firebase ni la carga de módulos. -->
+<!-- V2.0.5: Criterios oficiales por lote: líquidos=caducidad+density+envases+tara; sólidos=caducidad+envases+tara; reactivos generales=caducidad por lote. Compatible con futuro ERP Compras. -->
